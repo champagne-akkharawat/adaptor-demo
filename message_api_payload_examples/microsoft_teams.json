@@ -1,0 +1,51 @@
+{
+  "_comment": "POST https://smba.trafficmanager.net/apis/v3/conversations/<CONVERSATION_ID>/activities  Authorization: Bearer <AZURE_AD_TOKEN>",
+  "type": "message",
+  "from": {
+    "id": "28:aura-wellness-bot",
+    "name": "Aura Wellness Bot"
+  },
+  "conversation": {
+    "id": "a:1BqFKrv1A..."
+  },
+  "recipient": {
+    "id": "29:1GGkbbdfA...",
+    "name": "Jane Smith"
+  },
+  "text": "Hello Jane! Your wellness check-in is ready.",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "Daily Wellness Check-in",
+            "weight": "Bolder",
+            "size": "Medium"
+          },
+          {
+            "type": "TextBlock",
+            "text": "How are you feeling today?",
+            "wrap": true
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "Great",
+            "data": { "response": "great" }
+          },
+          {
+            "type": "Action.Submit",
+            "title": "Need support",
+            "data": { "response": "need_support" }
+          }
+        ]
+      }
+    }
+  ]
+}

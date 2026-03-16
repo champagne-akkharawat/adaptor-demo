@@ -1,0 +1,12 @@
+{
+  "_comment": "POST https://kapi.kakao.com/v2/api/talk/memo/default/send  Authorization: Bearer <ACCESS_TOKEN>",
+  "template_object": {
+    "object_type": "text",
+    "text": "안녕하세요! Aura Wellness입니다. 오늘 기분은 어떠세요?\n(Hello! This is Aura Wellness. How are you feeling today?)",
+    "link": {
+      "web_url": "https://aura-wellness.example.com",
+      "mobile_web_url": "https://aura-wellness.example.com"
+    },
+    "button_title": "자세히 보기 (Learn more)"
+  }
+}

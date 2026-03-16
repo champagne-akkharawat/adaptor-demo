@@ -1,0 +1,7 @@
+{
+  "_comment": "POST https://api.twitter.com/2/dm_conversations/<CONVERSATION_ID>/messages  Authorization: OAuth 1.0a or Bearer <TOKEN>",
+  "text": "Hi! Thanks for reaching out to Aura Wellness. A team member will be with you shortly.",
+  "attachments": {
+    "media_ids": []
+  }
+}

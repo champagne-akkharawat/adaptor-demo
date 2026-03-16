@@ -1,0 +1,21 @@
+{
+  "_comment": "Inbound POST to your webhook. Verify X-Hub-Signature-256 header (HMAC-SHA256). Same structure as Messenger but object='instagram'.",
+  "object": "instagram",
+  "entry": [
+    {
+      "id": "111222333444555",
+      "time": 1711900800000,
+      "messaging": [
+        {
+          "sender": { "id": "9876543210987654" },
+          "recipient": { "id": "111222333444555" },
+          "timestamp": 1711900800000,
+          "message": {
+            "mid": "aWFtYWtleW1lc3NhZ2VpZA==",
+            "text": "Hi! Can I learn more about your wellness programs?"
+          }
+        }
+      ]
+    }
+  ]
+}

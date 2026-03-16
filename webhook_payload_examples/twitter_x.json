@@ -1,0 +1,31 @@
+{
+  "_comment": "Inbound POST to your webhook. Verify crc_token challenge on GET. POST events signed via X-Twitter-Webhooks-Signature (HMAC-SHA256).",
+  "for_user_id": "1234567890",
+  "direct_message_events": [
+    {
+      "type": "message_create",
+      "id": "9876543210",
+      "created_timestamp": "1711900800000",
+      "message_create": {
+        "target": { "recipient_id": "1234567890" },
+        "sender_id": "5555555555",
+        "message_data": {
+          "text": "Hi! I heard about your wellness app. Can you tell me more?",
+          "entities": { "hashtags": [], "symbols": [], "user_mentions": [], "urls": [] }
+        }
+      }
+    }
+  ],
+  "users": {
+    "5555555555": {
+      "id": "5555555555",
+      "name": "Jane Smith",
+      "screen_name": "janesmith"
+    },
+    "1234567890": {
+      "id": "1234567890",
+      "name": "Aura Wellness",
+      "screen_name": "AuraWellness"
+    }
+  }
+}

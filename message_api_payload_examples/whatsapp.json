@@ -1,0 +1,11 @@
+{
+  "_comment": "POST https://graph.facebook.com/v19.0/<PHONE_NUMBER_ID>/messages  Authorization: Bearer <SYSTEM_USER_TOKEN>",
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "+15551234567",
+  "type": "text",
+  "text": {
+    "preview_url": false,
+    "body": "Hello! Your Aura Wellness session is confirmed for tomorrow at 10am."
+  }
+}

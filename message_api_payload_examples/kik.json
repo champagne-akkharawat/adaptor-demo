@@ -1,0 +1,13 @@
+{
+  "_comment": "POST https://api.kik.com/v1/message  Authorization: Basic base64(<BOT_USERNAME>:<API_KEY>)",
+  "messages": [
+    {
+      "body": "Hi! Welcome to Aura Wellness. We're here to support your well-being.",
+      "to": "some.user",
+      "type": "text",
+      "id": "msg-aura-001",
+      "delay": 0,
+      "typeTime": 0
+    }
+  ]
+}

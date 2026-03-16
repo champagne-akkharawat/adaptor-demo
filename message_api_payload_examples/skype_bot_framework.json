@@ -1,0 +1,33 @@
+{
+  "_comment": "POST https://smba.trafficmanager.net/apis/v3/conversations/<CONVERSATION_ID>/activities  Authorization: Bearer <AZURE_AD_TOKEN>",
+  "type": "message",
+  "from": {
+    "id": "28:aura-wellness-bot",
+    "name": "Aura Wellness"
+  },
+  "conversation": {
+    "id": "19:abc123@thread.skype"
+  },
+  "recipient": {
+    "id": "29:xyz789",
+    "name": "John Doe"
+  },
+  "text": "Hi John! This is Aura Wellness. Your wellness session is coming up tomorrow.",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.hero",
+      "content": {
+        "title": "Session Reminder",
+        "subtitle": "Tomorrow at 10:00 AM",
+        "text": "Guided Meditation — 30 minutes",
+        "buttons": [
+          {
+            "type": "openUrl",
+            "title": "Join session",
+            "value": "https://aura-wellness.example.com/join"
+          }
+        ]
+      }
+    }
+  ]
+}

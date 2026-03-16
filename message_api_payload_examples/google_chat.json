@@ -1,0 +1,38 @@
+{
+  "_comment": "POST https://chat.googleapis.com/v1/spaces/<SPACE_ID>/messages  Authorization: Bearer <OAUTH2_TOKEN>",
+  "text": "Hello! Your Aura Wellness reminder.",
+  "cards": [
+    {
+      "header": {
+        "title": "Aura Wellness",
+        "subtitle": "Daily Check-in",
+        "imageUrl": "https://aura-wellness.example.com/logo.png"
+      },
+      "sections": [
+        {
+          "widgets": [
+            {
+              "textParagraph": {
+                "text": "How are you feeling today? Take a moment to check in with yourself."
+              }
+            },
+            {
+              "buttons": [
+                {
+                  "textButton": {
+                    "text": "Start Check-in",
+                    "onClick": {
+                      "openLink": {
+                        "url": "https://aura-wellness.example.com/checkin"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

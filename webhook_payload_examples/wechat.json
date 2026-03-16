@@ -1,0 +1,12 @@
+{
+  "_comment": "Inbound POST (XML decoded to JSON here for readability). Verify signature: sort(token, timestamp, nonce) → SHA1. WeChat sends XML, not JSON.",
+  "xml": {
+    "ToUserName": "gh_XXXXXXXXXX",
+    "FromUserName": "oABCD1234567890",
+    "CreateTime": "1711900800",
+    "MsgType": "text",
+    "Content": "你好！我想了解更多关于冥想课程的信息。\n(Hello! I want to learn more about meditation sessions.)",
+    "MsgId": "1234567890123456"
+  },
+  "_note": "WeChat webhooks are XML. This JSON representation is for documentation purposes. Your server must parse XML and respond with XML."
+}

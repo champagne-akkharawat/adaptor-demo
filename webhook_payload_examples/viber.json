@@ -1,0 +1,22 @@
+{
+  "_comment": "Inbound POST to your webhook. Verify X-Viber-Content-Signature header (HMAC-SHA256 of raw body using auth token).",
+  "event": "message",
+  "timestamp": 1711900800,
+  "chat_hostname": "SN-CHAT-05_",
+  "message_token": 4912661846655238145,
+  "sender": {
+    "id": "01234567890A=",
+    "name": "Jane Smith",
+    "avatar": "https://viber.com/avatar/abc123",
+    "country": "US",
+    "language": "en",
+    "api_version": 8
+  },
+  "message": {
+    "type": "text",
+    "text": "Hello Aura Wellness! I'd like to learn about your services.",
+    "media": null,
+    "location": null,
+    "tracking_data": null
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_comment": "Inbound POST via approved MSP. Verified using OAuth 2.0. Payload structure defined by MSP contract.",
+  "v": "1.0",
+  "id": "inbound-msg-001",
+  "sourceId": "+15551234567",
+  "destinationId": "aura-wellness-business-id",
+  "type": "text",
+  "locale": "en-US",
+  "body": {
+    "values": [
+      {
+        "key": "body",
+        "value": "Hello! I'd like to learn more about Aura Wellness programs."
+      }
+    ]
+  },
+  "receivedDate": "2026-03-16T10:00:00Z",
+  "customerInfo": {
+    "name": "Jane Smith"
+  },
+  "_note": "Exact schema varies by MSP. Consult your MSP's documentation."
+}
