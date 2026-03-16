@@ -78,93 +78,7 @@ Five schema proposals based on best practices in event-driven architecture, API 
 
 ---
 
-## Proposal 2: Canonical Domain Model (Rich Object Graph)
-
-**Inspired by**: ActivityPub (W3C), XMPP message stanzas, enterprise canonical data model (CDM) pattern.
-
-**Philosophy**: Model the *domain* richly. Every entity (User, Conversation, Message, Content) is a first-class object with its own identity. Favours completeness and queryability over minimalism. Suited for direct DB writes.
-
-```json
-{
-  "message": {
-    "id": "msg_01HZ9K...",
-    "platform": "line",
-    "platform_message_id": "abc123",
-    "created_at": "2026-03-16T10:00:00Z",
-    "received_at": "2026-03-16T10:00:01Z",
-    "direction": "inbound",
-
-    "sender": {
-      "id": "usr_01HZ...",
-      "platform_user_id": "Uabc123",
-      "display_name": "Jane Doe",
-      "avatar_url": "https://...",
-      "account_type": "user"
-    },
-
-    "conversation": {
-      "id": "conv_01HZ...",
-      "platform_conversation_id": "Rxyz789",
-      "type": "direct",
-      "participants": []
-    },
-
-    "body": {
-      "type": "text",
-      "text": "Hello world",
-      "language": "en",
-      "media": null,
-      "location": null,
-      "template": null
-    },
-
-    "attachments": [],
-
-    "thread": {
-      "reply_to_id": null,
-      "thread_id": null
-    },
-
-    "metadata": {
-      "raw_platform_event": null,
-      "adaptor_version": "1.0.0",
-      "tags": []
-    }
-  }
-}
-```
-
-**Key fields:**
-
-| Field | Type | Description |
-|---|---|---|
-| `message.id` | ULID | Internal canonical ID |
-| `message.platform` | enum | `line`, `slack`, `discord`, `whatsapp`, etc. |
-| `message.platform_message_id` | string | Original ID from the platform (for dedup/idempotency) |
-| `message.created_at` | RFC3339 | When the platform says the message was sent |
-| `message.received_at` | RFC3339 | When the adaptor processed it |
-| `message.direction` | enum | `inbound` \| `outbound` |
-| `sender.account_type` | enum | `user`, `bot`, `system` |
-| `body.type` | enum | `text`, `image`, `video`, `audio`, `file`, `location`, `sticker`, `template`, `unsupported` |
-| `body.language` | BCP47? | Detected or declared language |
-| `body.media` | object? | `{ url, mime_type, size_bytes, duration_secs, thumbnail_url }` |
-| `body.location` | object? | `{ lat, lng, label }` |
-| `body.template` | object? | `{ template_id, variables }` — for structured/rich messages |
-| `metadata.raw_platform_event` | object? | Optional: store the original raw payload for debugging |
-
-**Pros:**
-- Both `id` (internal) and `platform_message_id` (external) are explicit — clean dedup story
-- `created_at` vs `received_at` distinction is critical for ordering and latency monitoring
-- `direction` field makes the same schema usable for outbound
-- `metadata.raw_platform_event` allows lossless storage
-
-**Cons:**
-- Heavier object — more fields to populate/null out per adaptor
-- Nested structure is more verbose to serialise onto a queue message
-
----
-
-## Proposal 3: Typed Content Variant (Discriminated Union / Sum Type)
+## Proposal 2: Typed Content Variant (Discriminated Union / Sum Type)
 
 **Inspired by**: Protocol Buffers `oneof`, GraphQL union types, Rust enum patterns.
 
@@ -244,94 +158,7 @@ Five schema proposals based on best practices in event-driven architecture, API 
 
 ---
 
----
-
-## Proposal 4: ActivityStreams 2.0 / Semantic Object Model
-
-**Inspired by**: [W3C ActivityStreams 2.0](https://www.w3.org/TR/activitystreams-core/), ActivityPub, JSON-LD.
-
-**Philosophy**: Messages are *semantic objects* with a formal vocabulary. An inbound message is a `Create` activity performed by an `Actor` on an `Object` (the message content) within a `Place` (the conversation). Meaning is encoded in the structure, not just field names. Suited for federation, open standards compliance, or systems that need to interop with Mastodon/ActivityPub ecosystems.
-
-```json
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "id": "https://internal/events/01HZ9K...",
-  "type": "Create",
-  "published": "2026-03-16T10:00:00Z",
-
-  "instrument": {
-    "type": "Service",
-    "name": "line-adaptor",
-    "version": "1.0.0"
-  },
-
-  "actor": {
-    "type": "Person",
-    "id": "https://internal/users/line:Uabc123",
-    "name": "Jane Doe",
-    "icon": { "type": "Image", "url": "https://..." }
-  },
-
-  "target": {
-    "type": "Group",
-    "id": "https://internal/conversations/line:Rxyz789",
-    "name": null
-  },
-
-  "object": {
-    "type": "Note",
-    "id": "https://internal/messages/line:msg123",
-    "content": "Hello world",
-    "mediaType": "text/plain",
-    "inReplyTo": null,
-    "attachment": []
-  },
-
-  "x-platform": {
-    "name": "line",
-    "message_id": "msg123",
-    "direction": "inbound"
-  }
-}
-```
-
-**ActivityStreams type mappings for `object.type`:**
-
-| Canonical content | AS2 type | Notes |
-|---|---|---|
-| Text message | `Note` | `content` holds the text |
-| Image | `Image` | `url` holds the media URL |
-| Video | `Video` | `url` + `duration` |
-| Audio | `Audio` | `url` + `duration` |
-| File | `Document` | `url` + `mediaType` + `name` |
-| Location | `Place` | `latitude`, `longitude`, `name` |
-| Sticker | `Emoji` | Non-standard; falls back to `Note` with `mediaType: image/webp` |
-| Template/rich | `Article` | `content` is structured HTML or JSON summary |
-| Unsupported | `Object` | Generic fallback |
-
-**`x-platform` extension fields** (prefixed to avoid namespace collision):
-
-| Field | Type | Description |
-|---|---|---|
-| `x-platform.name` | enum | Source platform |
-| `x-platform.message_id` | string | Platform's original message ID (for dedup) |
-| `x-platform.direction` | enum | `inbound` \| `outbound` |
-
-**Pros:**
-- Fully standardised vocabulary — zero ambiguity about what `actor`, `object`, `target` mean
-- `id` is a URI, which gives globally unique, resolvable identifiers for free
-- Natively extensible via JSON-LD `@context` without breaking existing consumers
-- Future-proof: directly compatible with ActivityPub federation if needed
-
-**Cons:**
-- Verbose — `@context`, URI-based IDs, and nested objects add significant overhead
-- AS2 vocabulary doesn't map cleanly to all message types (stickers, templates need workarounds)
-- URI-based IDs are awkward for internal SQS/DB use without a resolver layer
-- Steep learning curve; most backend engineers are not familiar with AS2
-
----
-
-## Proposal 5: Event Sourcing / Append-only Log Model
+## Proposal 3: Event Sourcing / Append-only Log Model
 
 **Inspired by**: CQRS/Event Sourcing (Greg Young), Kafka message conventions, EventStoreDB schema patterns.
 
@@ -445,15 +272,15 @@ MessageFailed       — outbound send failed
 
 ## Comparison Summary
 
-| | P1 CloudEvents | P2 Domain Model | P3 Typed Variants | P4 ActivityStreams | P5 Event Sourcing |
-|---|---|---|---|---|---|
-| **Queue fit** | Excellent — spec-compliant | Good — slightly heavy | Excellent — minimal | Poor — too verbose | Excellent — partition key built-in |
-| **DB fit** | Fair — `data` is opaque blob | Excellent — maps to relations | Good — content is typed | Poor — URI IDs awkward | Good — append-only log maps to timeseries/event store |
-| **Type safety** | Low | Medium | High | Low | Medium |
-| **Extensibility** | High | High | Medium | Very high (JSON-LD) | High — event versioning |
-| **Complexity** | Low | High | Medium | Very high | High |
-| **Dedup story** | Via `id` | Via `platform_message_id` | Via `idempotency_key` | Via URI `id` | Via `idempotency_key` + `stream.sequence` |
-| **Ordering guarantee** | None | None | None | None | Via `stream.id` partition key |
-| **Outbound reuse** | Poor — needs separate schema | Good — `direction` field | Good — `direction` field | Good — `direction` in extension | Excellent — full event vocabulary |
-| **Beyond text messages** | Limited | Partial | Partial | Good | Excellent — `MessageRead`, `MessageDeleted`, etc. |
-| **Best fit for** | Interop / open ecosystems | Rich querying / analytics | Codegen / type-safe services | Federation / open standards | High-throughput / audit / replay |
+| | P1 CloudEvents | P2 Typed Variants | P3 Event Sourcing |
+|---|---|---|---|
+| **Queue fit** | Excellent — spec-compliant | Excellent — minimal | Excellent — partition key built-in |
+| **DB fit** | Fair — `data` is opaque blob | Good — content is typed | Good — append-only log maps to timeseries/event store |
+| **Type safety** | Low | High | Medium |
+| **Extensibility** | High | Medium | High — event versioning |
+| **Complexity** | Low | Medium | High |
+| **Dedup story** | Via `id` | Via `idempotency_key` | Via `idempotency_key` + `stream.sequence` |
+| **Ordering guarantee** | None | None | Via `stream.id` partition key |
+| **Outbound reuse** | Poor — needs separate schema | Good — `direction` field | Excellent — full event vocabulary |
+| **Beyond text messages** | Limited | Partial | Excellent — `MessageRead`, `MessageDeleted`, etc. |
+| **Best fit for** | Interop / open ecosystems | Codegen / type-safe services | High-throughput / audit / replay |
