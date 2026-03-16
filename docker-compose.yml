@@ -1,0 +1,9 @@
+services:
+  line-adaptor:
+    build: ./line_adaptor
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./line_adaptor/internal/.env
+    volumes:
+      - ./line_adaptor/event_logs:/app/event_logs
