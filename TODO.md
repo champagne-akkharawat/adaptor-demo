@@ -18,6 +18,9 @@ The research phase documents how each platform handles each message type (receiv
   - [ ] image_write
   - [ ] file_read
   - [ ] file_write
+  - [ ] deep_research
+    - [ ] webhook.md (setup, auth, all webhook event payload types)
+    - [ ] message_api.md (setup, auth, all send endpoints and message object types)
 - [x] Facebook Messenger
   - [x] text_message_read
   - [x] text_message_write

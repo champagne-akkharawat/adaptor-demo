@@ -1,0 +1,17 @@
+I want you to research Line message API integration both inbound (webhook) and outbound (rest API) to support CS integration hub usecase.
+
+The research result should cover:
+
+Webhook:
+- Setup: actions that need manual user action.  Things like registering a dev account, etc.  Make it detailed and include doc url if needed.
+- Authentication/Authorization
+- All possible webhook request payload with explaination included.
+
+Message API
+- Setup: actions that need manual user action.  Things like registering a dev account, etc.  Make it detailed and include doc url if needed.
+- Authentication/Authorization
+- All possible webhook request payload with explaination included.
+
+Add these to @TODO.md first, then do the research.
+
+When finished, write the research to research_results\platform_specifics\line\deep_research
