@@ -1235,7 +1235,7 @@ When `mode` is `"standby"`, the bot is operating in a multi-bot (module channel)
 
 ### Rate Limits and Timeouts
 
-Your webhook endpoint should respond within **1 second** (ideally faster). The LINE Platform treats a lack of response or a non-2xx status code as a failed delivery and will retry. Process events asynchronously if needed — respond 200 immediately and handle work in a background thread or queue.
+Your webhook endpoint should respond with HTTP 2xx within **2 seconds**. The LINE Platform treats a lack of response or a non-2xx status code as a failed delivery and will retry. Process events asynchronously if needed — respond 200 immediately and handle work in a background thread or queue.
 
 ### Port and IP Range
 

@@ -512,7 +512,7 @@ Multicast returns an empty JSON object on success (unlike reply/push, no `sentMe
 
 **Key notes:**
 - Only user IDs are valid in `to`. Group IDs and room IDs are not supported.
-- Max 500 user IDs per request. To send to more users, paginate into multiple requests.
+- Max 500 user IDs per request. To send to more users, paginate into multiple requests. ⚠️ *Spot-check: limit not confirmed from rendered reference page during validation (2026-03-16); verify against `to` parameter table at [Messaging API reference](https://developers.line.biz/en/reference/messaging-api/#send-multicast-message).*
 - Quota cost = number of valid recipients reached.
 - Supports `X-Line-Retry-Key`.
 
@@ -839,8 +839,8 @@ If you need to share a file with a user via the bot, the workaround is to upload
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `type` | string | Yes | Always `"location"` |
-| `title` | string | Yes | Location label (e.g., place name). Max 100 characters. |
-| `address` | string | Yes | Street address. Max 300 characters. |
+| `title` | string | Yes | Location label (e.g., place name). Max 100 characters. ⚠️ *Spot-check: not confirmed from rendered reference page during validation (2026-03-16).* |
+| `address` | string | Yes | Street address. Max 300 characters. ⚠️ *Spot-check: not confirmed from rendered reference page during validation (2026-03-16).* |
 | `latitude` | number (float) | Yes | Geographic latitude. |
 | `longitude` | number (float) | Yes | Geographic longitude. |
 
@@ -1062,7 +1062,7 @@ Flex Messages use CSS Flexbox layout principles and offer the richest visual cus
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `type` | string | Yes | Always `"carousel"` |
-| `contents` | array | Yes | Array of `BubbleContainer` objects. Max 12 bubbles. All bubbles must have the same height. |
+| `contents` | array | Yes | Array of `BubbleContainer` objects. Max 12 bubbles. All bubbles must have the same height. ⚠️ *Spot-check: 12-bubble limit not confirmed from rendered reference page during validation (2026-03-16); verify at [Flex Message reference](https://developers.line.biz/en/reference/messaging-api/#flex-message).* |
 
 **Key Flex components:**
 
@@ -1374,8 +1374,8 @@ The `sender` property overrides the display name and icon for **a single message
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `sender` | object | No | Overrides display name and icon for this message only. |
-| `sender.name` | string | No | Display name shown on this message bubble. Max 20 characters. |
-| `sender.iconUrl` | string | No | HTTPS URL of the avatar image. JPEG or PNG. Max 1 MB. Displayed at 30×30px in chat. |
+| `sender.name` | string | No | Display name shown on this message bubble. Max 20 characters. ⚠️ *Spot-check: not confirmed from rendered reference page during validation (2026-03-16); verify at [icon-nickname-switch reference](https://developers.line.biz/en/docs/messaging-api/icon-nickname-switch/).* |
+| `sender.iconUrl` | string | No | HTTPS URL of the avatar image. JPEG or PNG. Max 1 MB. Displayed at 30×30px in chat. ⚠️ *Spot-check: not confirmed from rendered reference page during validation (2026-03-16); verify at [icon-nickname-switch reference](https://developers.line.biz/en/docs/messaging-api/icon-nickname-switch/).* |
 
 **Notes:**
 - Works with all message types and all five send endpoints.
