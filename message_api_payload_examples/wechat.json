@@ -1,8 +1,0 @@
-{
-  "_comment": "POST https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=<ACCESS_TOKEN>",
-  "touser": "oABCD1234567890",
-  "msgtype": "text",
-  "text": {
-    "content": "欢迎来到Aura Wellness！我们很高兴为您提供健康支持。请问有什么可以帮助您的？\n(Welcome to Aura Wellness! We are happy to support your health journey. How can we help you?)"
-  }
-}

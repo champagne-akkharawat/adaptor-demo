@@ -2,9 +2,11 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(find /c/Users/User/Repositories/aura-wellness-projects/adaptor-demo -type f -name *.md -o -name go.mod -o -name CLAUDE.md -o -name README*)",
       "Bash(go build:*)",
-      "Bash(cmd /c \"go build ./...\")"
+      "WebFetch(*)",
+      "Read",
+      "Glob",
+      "Grep"
     ]
   }
 }
