@@ -1,0 +1,73 @@
+# TODO
+
+## Context
+
+This project is building a **multi-platform messaging adaptor** for the Aura Wellness platform. The goal is to allow Aura to send and receive messages across multiple consumer and enterprise messaging platforms (LINE, Facebook Messenger, Instagram, Discord, Microsoft Teams, Slack, Twitter/X, WhatsApp) through a single unified interface.
+
+The adaptor normalises each platform's proprietary webhook payloads and REST APIs into a common canonical schema, so the Aura application layer never needs to know which platform a message came from or is going to.
+
+The research phase documents how each platform handles each message type (receiving via webhook, sending via API) so we can design the canonical schema and write the adaptors accurately. The schema design phase produces and selects the unified message format that all adaptors will translate to and from.
+
+## Research
+
+### Platform API Research
+- [x] LINE
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Facebook Messenger
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Instagram
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Discord
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Microsoft Teams
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Slack
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [x] Twitter / X
+  - [x] text_message_read
+  - [x] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+- [ ] WhatsApp _(skipped for now)_
+  - [ ] text_message_read
+  - [ ] text_message_write
+  - [ ] image_read
+  - [ ] image_write
+  - [ ] file_read
+  - [ ] file_write
+
+### Schema Design
+- [x] Unified schema proposals (5 proposals documented in research_results/proposals/unified_schema.md)
+- [ ] Select a schema proposal to adopt

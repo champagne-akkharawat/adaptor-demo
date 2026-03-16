@@ -7,6 +7,10 @@
       "Read",
       "Glob",
       "Grep"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\User\\Repositories\\aura-wellness-projects\\adaptor-demo\\research_results",
+      "c:\\Users\\User\\Repositories\\aura-wellness-projects\\adaptor-demo\\research_results\\platform_specifics"
     ]
   }
 }
