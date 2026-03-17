@@ -14,62 +14,39 @@ The research phase documents how each platform handles each message type (receiv
 - [x] LINE
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
   - [ ] deep_research
-    - [ ] webhook.md (setup, auth, all webhook event payload types)
-    - [ ] message_api.md (setup, auth, all send endpoints and message object types)
+    - [x] webhook.md (setup, auth, all webhook event payload types)
+    - [x] message_api.md (setup, auth, all send endpoints and message object types)
+    - [x] Validate all finding against official docs via web fetch
+    - [ ] Confirm all ⚠️ Spot-check
 - [x] Facebook Messenger
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
+  - [ ] deep_research
+    - [x] webhook_reference.md (setup, auth, all webhook event payload types)
+    - [x] message_api.md (setup, auth, all send endpoints and message object types)
+    - [ ] Validate all findings against official docs via web fetch
+    - [ ] Confirm all ⚠️ Spot-check items
 - [x] Instagram
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
+    - [x] webhook.md (setup, auth, all webhook event payload types)
+    - [ ] message_api.md (setup, auth, all send endpoints and message object types)
 - [x] Discord
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
 - [x] Microsoft Teams
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
 - [x] Slack
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
 - [x] Twitter / X
   - [x] text_message_read
   - [x] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
 - [ ] WhatsApp _(skipped for now)_
   - [ ] text_message_read
   - [ ] text_message_write
-  - [ ] image_read
-  - [ ] image_write
-  - [ ] file_read
-  - [ ] file_write
 
 ### Schema Design
 - [x] Unified schema proposals (5 proposals documented in research_results/proposals/unified_schema.md)
