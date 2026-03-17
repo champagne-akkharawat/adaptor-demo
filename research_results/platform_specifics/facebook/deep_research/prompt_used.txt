@@ -1,0 +1,17 @@
+I want you to research Facebook Messenger API integration both inbound (webhook) and outbound (REST API) to support a CS integration hub use case.
+
+The research result should cover:
+
+Webhook:
+
+Setup: all manual actions required — creating a Meta developer account, creating a Meta App, connecting a Facebook Page, configuring the webhook subscription (callback URL + verify token), selecting subscribed fields, granting Page permissions, and App Review requirements for production. Make it detailed and include doc URLs.
+Authentication/Authorization: how Meta signs webhook requests (X-Hub-Signature-256 header, HMAC-SHA256 with App Secret), step-by-step verification algorithm with code examples.
+All possible webhook payload types with field-by-field explanations and full JSON examples. Cover every messaging entry type: messages (text, image, video, audio, file, location, sticker, reply, reactions, unsend), message_deliveries, message_reads, messaging_postbacks, messaging_optins (recurring notifications), messaging_referrals, messaging_handovers (pass thread control, take thread control, request thread control), messaging_policy_enforcement, standby channel events.
+Send Message API (Graph API):
+
+Setup: all manual actions required — getting a Page Access Token (short-lived vs. long-lived vs. never-expiring system user token), required Page and app permissions (pages_messaging, pages_read_engagement, etc.), App Review submission for production access, and rate limit tiers.
+Authentication/Authorization: Page Access Token types in detail (how to obtain each, expiry, refresh), the access_token query param vs. Bearer header pattern, business verification and advanced access requirements.
+All possible send API request payloads with field-by-field explanations and full JSON examples. Cover the POST /v21.0/me/messages endpoint for: plain text, image/video/audio/file attachments (by URL and by upload ID), templates (generic, button, media, receipt, airline templates), quick replies, sender actions (typing_on, typing_off, mark_seen), persona API (custom sender name/avatar), handover protocol pass/take thread control, private replies.
+Add these to @TODO.md first, then do the research.
+
+When finished, write the research to research_results\platform_specifics\facebook\deep_research

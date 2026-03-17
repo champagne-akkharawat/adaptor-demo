@@ -1,0 +1,33 @@
+I want you to research Instagram Messaging API integration both inbound (webhook) and outbound (REST API) to support a CS integration hub use case.
+
+The research result should cover:
+
+Webhook:
+- Setup: all manual actions required — creating a Meta developer account, creating a Meta App (Business type), connecting an Instagram Professional Account (Creator or Business), enabling Instagram messaging in the app dashboard, configuring the webhook subscription (callback URL + verify token), selecting subscribed fields (`messages`, `messaging_seen`, `messaging_postbacks`, `messaging_optins`, `messaging_referrals`, `messaging_handovers`), granting required permissions, and App Review requirements for production access. Make it detailed and include doc URLs.
+- Authentication/Authorization: how Meta signs webhook requests (`X-Hub-Signature-256` header, HMAC-SHA256 with App Secret), step-by-step verification algorithm with code examples.
+- All possible webhook payload types with field-by-field explanations and full JSON examples. Cover every inbound event type:
+  - `messages`: text, image, video, audio, file, story mention, story reply, reaction (add/remove), unsend, share (link/media), product, referral
+  - `messaging_seen`: read receipts
+  - `messaging_postbacks`: postback from buttons
+  - `messaging_optins`: recurring notification opt-in
+  - `messaging_referrals`: deep-link referrals (m.me links, ads, story CTA)
+  - `messaging_handovers`: pass thread control, take thread control, request thread control
+  - Standby channel events
+
+Message API (Graph API):
+- Setup: all manual actions required — obtaining an Instagram-scoped Page Access Token or System User Token, required permissions (`instagram_manage_messages`, `pages_manage_metadata`, `instagram_basic`, etc.), linking the Instagram account to a Facebook Page, App Review submission for `instagram_manage_messages` advanced access, rate limit tiers (standard vs. high volume).
+- Authentication/Authorization: Page Access Token types in detail (short-lived, long-lived, never-expiring system user token), how each is obtained, the `access_token` query param vs. Authorization Bearer header, business verification requirements.
+- All possible send API request payloads with field-by-field explanations and full JSON examples. Cover the `POST /v21.0/me/messages` endpoint for:
+  - Text messages
+  - Image, video, audio, file attachments (by URL)
+  - Generic template (image, title, subtitle, buttons)
+  - Product template (catalog-linked)
+  - Quick replies (text, user phone, user email)
+  - Sender actions (`typing_on`, `typing_off`, `mark_seen`)
+  - Ice breakers and persistent menu configuration (as setup steps)
+  - Handover protocol: pass thread control, take thread control
+  - Private replies to comments and story mentions
+
+Add these to @TODO.md first, then do the research.
+
+When finished, write the research to research_results\platform_specifics\instagram\deep_research
