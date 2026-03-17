@@ -1,0 +1,12 @@
+services:
+  line-adaptor:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      LINE_CHANNEL_SECRET: ${LINE_CHANNEL_SECRET}
+      LINE_CHANNEL_ACCESS_TOKEN: ${LINE_CHANNEL_ACCESS_TOKEN}
+      PORT: "8080"
+      LOG_DIR: "/app/logs"
+    volumes:
+      - ./logs:/app/logs
