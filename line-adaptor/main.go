@@ -6,6 +6,7 @@ import (
 
 	"line-adaptor/internal/config"
 	"line-adaptor/internal/handler"
+	"line-adaptor/internal/line/content"
 	"line-adaptor/internal/logger"
 )
 
@@ -16,7 +17,7 @@ func main() {
 	}
 
 	lgr := logger.New(cfg.LogDir)
-	h := handler.New(cfg.ChannelSecret, cfg.ChannelAccessToken, lgr)
+	h := handler.New(cfg.ChannelSecret, cfg.ChannelAccessToken, lgr, content.New(cfg.ChannelAccessToken))
 
 	http.HandleFunc("/webhook", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {

@@ -7,6 +7,8 @@ import (
 	"net/http"
 
 	"line-adaptor/internal/line"
+	"line-adaptor/internal/line/content"
+	"line-adaptor/internal/line/messages"
 	"line-adaptor/internal/logger"
 )
 
@@ -14,13 +16,15 @@ type Handler struct {
 	channelSecret string
 	accessToken   string
 	log           *logger.Logger
+	content       *content.Client
 }
 
-func New(channelSecret, accessToken string, log *logger.Logger) *Handler {
+func New(channelSecret, accessToken string, log *logger.Logger, content *content.Client) *Handler {
 	return &Handler{
 		channelSecret: channelSecret,
 		accessToken:   accessToken,
 		log:           log,
+		content:       content,
 	}
 }
 
@@ -54,6 +58,15 @@ func (h *Handler) Webhook(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, event := range payload.Events {
+		if event.Type == "message" && event.Message != nil {
+			parsed, err := messages.Route(event.Message)
+			if err != nil {
+				log.Printf("unrecognised message type: %v", err)
+			} else {
+				log.Printf("message type: %s", parsed.MessageType())
+			}
+		}
+
 		if event.ReplyToken != "" {
 			if err := line.Reply(h.accessToken, event.ReplyToken); err != nil {
 				log.Printf("failed to send reply: %v", err)

@@ -1,0 +1,29 @@
+{
+  "destination": "U39f7231fcb415a389201bc147de44810",
+  "events": [
+    {
+      "type": "message",
+      "message": {
+        "type": "file",
+        "id": "605486864136143105",
+        "markAsReadToken": "flYCxDk1WtZEVo1uIYQapDjJnf6g2928dFC6i69IAZKSWgk0wa2jVfSqUDSVcZATQY7H6FqeFT48jhs2EV4YyQnaipRBqe6rOBnWoJ3l-z9fPqiD04bIjG7AssX1tc6nH-3_DZ1V9e6V3QQtoAKLu5mwt5MhLBL4d4C9djag3Lk764QkmmL9Cu-1uw5vGO3CeDypgs2jTIFE6uMnQX4IYQ",
+        "fileName": "20260317_133847.mp4",
+        "fileSize": 5056874,
+        "contentProvider": {
+          "type": "line"
+        }
+      },
+      "webhookEventId": "01KKX8BMWVGZHVS14FT8S3F1HP",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "timestamp": 1773729600058,
+      "source": {
+        "type": "user",
+        "userId": "U75cbb5916e0444a5b70108ee2eb38e7c"
+      },
+      "replyToken": "79f1a01a33ee423fb2b4b699b24da359",
+      "mode": "active"
+    }
+  ]
+}

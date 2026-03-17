@@ -15,6 +15,7 @@ import (
 
 	"line-adaptor/internal/handler"
 	"line-adaptor/internal/line"
+	"line-adaptor/internal/line/content"
 	"line-adaptor/internal/logger"
 )
 
@@ -61,7 +62,7 @@ func TestWebhook_HappyPath(t *testing.T) {
 	t.Cleanup(func() { line.ReplyAPIURL = original })
 
 	logDir := t.TempDir()
-	h := handler.New("test-secret", "test-token", logger.New(logDir))
+	h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
 	srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
 	defer srv.Close()
 
@@ -119,7 +120,7 @@ func TestWebhook_HappyPath(t *testing.T) {
 // The handler must respond 401 and must not create any log files.
 func TestWebhook_InvalidSignature(t *testing.T) {
 	logDir := t.TempDir()
-	h := handler.New("test-secret", "test-token", logger.New(logDir))
+	h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
 	srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
 	defer srv.Close()
 
@@ -158,7 +159,7 @@ func TestWebhook_InvalidSignature(t *testing.T) {
 // reply API (there is no replyToken to act on).
 func TestWebhook_EmptyEvents(t *testing.T) {
 	logDir := t.TempDir()
-	h := handler.New("test-secret", "test-token", logger.New(logDir))
+	h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
 	srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
 	defer srv.Close()
 
@@ -210,7 +211,7 @@ func TestWebhook_NoReplyToken(t *testing.T) {
 	t.Cleanup(func() { line.ReplyAPIURL = original })
 
 	logDir := t.TempDir()
-	h := handler.New("test-secret", "test-token", logger.New(logDir))
+	h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
 	srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
 	defer srv.Close()
 
@@ -256,5 +257,168 @@ func TestWebhook_NoReplyToken(t *testing.T) {
 	}
 	if got := replyCalls.Load(); got != 0 {
 		t.Errorf("expected reply API to never be called, called %d time(s)", got)
+	}
+}
+
+// TestWebhook_MessageTypes checks that the handler returns 200 for every
+// supported message type.
+func TestWebhook_MessageTypes(t *testing.T) {
+	cases := []struct {
+		name    string
+		message map[string]interface{}
+	}{
+		{
+			name: "text",
+			message: map[string]interface{}{
+				"type": "text",
+				"id":   "200001",
+				"text": "Hello",
+			},
+		},
+		{
+			name: "image",
+			message: map[string]interface{}{
+				"type":            "image",
+				"id":              "200002",
+				"contentProvider": map[string]string{"type": "line"},
+			},
+		},
+		{
+			name: "video",
+			message: map[string]interface{}{
+				"type":            "video",
+				"id":              "200003",
+				"contentProvider": map[string]string{"type": "line"},
+			},
+		},
+		{
+			name: "audio",
+			message: map[string]interface{}{
+				"type":            "audio",
+				"id":              "200004",
+				"contentProvider": map[string]string{"type": "line"},
+			},
+		},
+		{
+			name: "file",
+			message: map[string]interface{}{
+				"type":     "file",
+				"id":       "200005",
+				"fileName": "report.pdf",
+				"fileSize": 1024,
+			},
+		},
+		{
+			name: "location",
+			message: map[string]interface{}{
+				"type":      "location",
+				"id":        "200006",
+				"latitude":  35.65910807942215,
+				"longitude": 139.70372892916718,
+			},
+		},
+		{
+			name: "sticker",
+			message: map[string]interface{}{
+				"type":                "sticker",
+				"id":                  "200007",
+				"packageId":           "446",
+				"stickerId":           "1988",
+				"stickerResourceType": "STATIC",
+			},
+		},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			logDir := t.TempDir()
+			h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
+			srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
+			defer srv.Close()
+
+			payload := map[string]interface{}{
+				"destination": "Udeadbeefdeadbeefdeadbeefdeadbeef",
+				"events": []map[string]interface{}{
+					{
+						"type":           "message",
+						"mode":           "active",
+						"timestamp":      1625665242211,
+						"webhookEventId": "01FZ74A0TDDPYRVKNK77XKC3ZR",
+						"deliveryContext": map[string]bool{"isRedelivery": false},
+						"source":         map[string]string{"type": "user", "userId": "Udeadbeef"},
+						"message":        tc.message,
+					},
+				},
+			}
+			body, err := json.Marshal(payload)
+			if err != nil {
+				t.Fatalf("marshal payload: %v", err)
+			}
+
+			req, err := http.NewRequest(http.MethodPost, srv.URL+"/webhook", strings.NewReader(string(body)))
+			if err != nil {
+				t.Fatalf("new request: %v", err)
+			}
+			req.Header.Set("Content-Type", "application/json")
+			req.Header.Set("X-Line-Signature", makeSignature("test-secret", body))
+
+			resp, err := http.DefaultClient.Do(req)
+			if err != nil {
+				t.Fatalf("do request: %v", err)
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode != http.StatusOK {
+				t.Errorf("expected 200, got %d", resp.StatusCode)
+			}
+		})
+	}
+}
+
+// TestWebhook_UnknownMessageType sends a valid signed request with an
+// unrecognised message type. The handler must still return 200.
+func TestWebhook_UnknownMessageType(t *testing.T) {
+	logDir := t.TempDir()
+	h := handler.New("test-secret", "test-token", logger.New(logDir), content.New("test-token"))
+	srv := httptest.NewServer(http.HandlerFunc(h.Webhook))
+	defer srv.Close()
+
+	payload := map[string]interface{}{
+		"destination": "Udeadbeefdeadbeefdeadbeefdeadbeef",
+		"events": []map[string]interface{}{
+			{
+				"type":           "message",
+				"mode":           "active",
+				"timestamp":      1625665242211,
+				"webhookEventId": "01FZ74A0TDDPYRVKNK77XKC3ZR",
+				"deliveryContext": map[string]bool{"isRedelivery": false},
+				"source":         map[string]string{"type": "user", "userId": "Udeadbeef"},
+				"message": map[string]string{
+					"type": "unknown_type",
+					"id":   "300001",
+				},
+			},
+		},
+	}
+	body, err := json.Marshal(payload)
+	if err != nil {
+		t.Fatalf("marshal payload: %v", err)
+	}
+
+	req, err := http.NewRequest(http.MethodPost, srv.URL+"/webhook", strings.NewReader(string(body)))
+	if err != nil {
+		t.Fatalf("new request: %v", err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("X-Line-Signature", makeSignature("test-secret", body))
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatalf("do request: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected 200 for unknown message type, got %d", resp.StatusCode)
 	}
 }
