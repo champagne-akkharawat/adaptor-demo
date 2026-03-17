@@ -1,0 +1,28 @@
+{
+  "_note": "Confirm template: a text message with exactly 2 action buttons (yes/no style). 'text' max: 240 chars. 'actions' must have exactly 2 items. No image support. Useful for simple binary confirmations (cancel order, confirm booking, etc.). When the user taps a button, a postback event (for postback actions) or a message event (for message actions) fires — not a 'template_postback' event.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "template",
+      "altText": "Confirm cancellation — reply Yes or No",
+      "template": {
+        "type": "confirm",
+        "text": "Are you sure you want to cancel your order #12345?",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "Yes, cancel",
+            "data": "action=cancel&orderId=12345",
+            "displayText": "Yes, please cancel my order"
+          },
+          {
+            "type": "postback",
+            "label": "No, keep it",
+            "data": "action=keep&orderId=12345",
+            "displayText": "No, keep my order"
+          }
+        ]
+      }
+    }
+  ]
+}

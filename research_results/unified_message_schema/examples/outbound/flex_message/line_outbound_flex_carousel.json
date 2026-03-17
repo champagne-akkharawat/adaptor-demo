@@ -1,0 +1,105 @@
+{
+  "_note": "Flex message with a 'carousel' container — a horizontally scrollable sequence of bubble cards. Max 12 bubbles per carousel. Each bubble is an independent card with its own hero/body/footer. Use carousel flex when you need more layout flexibility than the template carousel (e.g., mixed action types, rich styling per card). altText is shared across all cards (max 400 chars).",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "flex",
+      "altText": "Browse our top products",
+      "contents": {
+        "type": "carousel",
+        "contents": [
+          {
+            "type": "bubble",
+            "hero": {
+              "type": "image",
+              "url": "https://example.com/images/product1.jpg",
+              "size": "full",
+              "aspectRatio": "20:13",
+              "aspectMode": "cover"
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Product Alpha",
+                  "weight": "bold",
+                  "size": "lg"
+                },
+                {
+                  "type": "text",
+                  "text": "$29.99",
+                  "color": "#1DB446",
+                  "size": "md",
+                  "margin": "sm"
+                }
+              ]
+            },
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "action": {
+                    "type": "postback",
+                    "label": "Add to Cart",
+                    "data": "action=add&itemid=alpha",
+                    "displayText": "Added Product Alpha to cart"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "bubble",
+            "hero": {
+              "type": "image",
+              "url": "https://example.com/images/product2.jpg",
+              "size": "full",
+              "aspectRatio": "20:13",
+              "aspectMode": "cover"
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Product Beta",
+                  "weight": "bold",
+                  "size": "lg"
+                },
+                {
+                  "type": "text",
+                  "text": "$49.99",
+                  "color": "#1DB446",
+                  "size": "md",
+                  "margin": "sm"
+                }
+              ]
+            },
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "action": {
+                    "type": "postback",
+                    "label": "Add to Cart",
+                    "data": "action=add&itemid=beta",
+                    "displayText": "Added Product Beta to cart"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

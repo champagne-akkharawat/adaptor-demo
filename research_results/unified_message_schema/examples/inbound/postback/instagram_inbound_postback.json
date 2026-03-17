@@ -1,0 +1,26 @@
+{
+  "_note": "User tapped a button in an Icebreaker (conversation starter) or a Generic Template button. Arrives as a 'messaging_postbacks' event — NOT a 'messages' event. 'postback.payload' is the developer-defined string set on the button. 'postback.title' is the button label. Handle this separately from message events. No 'messaging_type' field on Instagram. Subscribe to 'messaging_postbacks' webhook field to receive these.",
+  "object": "instagram",
+  "entry": [
+    {
+      "id": "17841400000000001",
+      "time": 1773729510000,
+      "messaging": [
+        {
+          "sender": {
+            "id": "17841400000000002"
+          },
+          "recipient": {
+            "id": "17841400000000001"
+          },
+          "timestamp": 1773729510000,
+          "postback": {
+            "mid": "m_ABCDEFG123456",
+            "title": "Track My Order",
+            "payload": "POSTBACK_TRACK_ORDER"
+          }
+        }
+      ]
+    }
+  ]
+}

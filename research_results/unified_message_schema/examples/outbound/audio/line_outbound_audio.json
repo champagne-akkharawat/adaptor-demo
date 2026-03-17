@@ -1,0 +1,11 @@
+{
+  "_note": "Send an audio file to the user. 'originalContentUrl' must be HTTPS, max 2000 chars. Supported format: M4A (AAC encoded). Max file size: 200 MB. 'duration' is required and is displayed in the chat UI before the user taps play (in milliseconds). The URL must be publicly accessible at send time.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "audio",
+      "originalContentUrl": "https://example.com/audio/welcome_message.m4a",
+      "duration": 30000
+    }
+  ]
+}

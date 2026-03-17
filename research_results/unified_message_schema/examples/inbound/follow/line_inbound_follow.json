@@ -1,0 +1,23 @@
+{
+  "_note": "User added the LINE Official Account as a friend, or unblocked it. 'follow.isUnblocked: false' means a new follow (first-time or re-follow after unfollowing). 'follow.isUnblocked: true' means the user had previously blocked the account and is now unblocking it. Has a replyToken — use it to send a welcome/onboarding message. Only fires in 1-on-1 chat context; does not fire in groups or rooms.",
+  "destination": "U39f7231fcb415a389201bc147de44810",
+  "events": [
+    {
+      "type": "follow",
+      "mode": "active",
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "Ufc729a925b3abef12345678901234ab"
+      },
+      "webhookEventId": "01FZ74ASS536FW97EX38NKCZQK",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "replyToken": "bb173f4d9cf64aed9d408ab4e36339ad",
+      "follow": {
+        "isUnblocked": false
+      }
+    }
+  ]
+}

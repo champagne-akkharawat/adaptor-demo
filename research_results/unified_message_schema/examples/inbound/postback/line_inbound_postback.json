@@ -1,0 +1,23 @@
+{
+  "_note": "User tapped a postback action button in a template or flex message, or tapped a rich menu item. 'postback.data' is the developer-defined string set when building the button (max 300 chars). 'postback.params' is only present for datetimepicker actions — it contains the selected date/time values. Has a replyToken. Distinct from a 'message' event: no text is sent to the conversation unless the button has a 'displayText' set (which appears as a user chat bubble).",
+  "destination": "U39f7231fcb415a389201bc147de44810",
+  "events": [
+    {
+      "type": "postback",
+      "mode": "active",
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "U75cbb5916e0444a5b70108ee2eb38e7c"
+      },
+      "webhookEventId": "01FZ74A0TDDPYRVKNK77XKC3ZR",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "replyToken": "b60d432864f44d079f6d8efe86cf404b",
+      "postback": {
+        "data": "action=buy&itemid=123"
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "_note": "Media template: a full-width image or video with optional buttons. 'elements' is always exactly 1. Use 'attachment_id' (from Attachment Upload API with is_reusable:true) or 'url' — they are mutually exclusive. 'media_type' is 'image' or 'video'. Max 3 buttons. Useful for product showcases where you want a large visual with action buttons underneath.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "media",
+        "sharable": false,
+        "elements": [
+          {
+            "media_type": "image",
+            "attachment_id": "1857777774821032",
+            "buttons": [
+              {
+                "type": "web_url",
+                "title": "Shop Now",
+                "url": "https://example.com/products/featured"
+              },
+              {
+                "type": "postback",
+                "title": "Learn More",
+                "payload": "LEARN_MORE_FEATURED"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "_note": "Send a file attachment via URL. The URL must be publicly accessible at send time. Max file size: 25 MB. Set 'is_reusable: true' to receive an attachment_id — send the same document repeatedly without re-uploading. Common formats (PDF, DOCX, XLSX, ZIP) are accepted in practice; Meta does not publish a formal allowlist.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "file",
+      "payload": {
+        "url": "https://example.com/docs/product_guide.pdf",
+        "is_reusable": true
+      }
+    }
+  }
+}

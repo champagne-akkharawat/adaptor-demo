@@ -1,0 +1,15 @@
+{
+  "_note": "Send an audio clip to an Instagram user. Same attachment structure as Facebook. The URL must be publicly accessible at send time. Max file size: 25 MB. Recommended format: MP3. 'messaging_type' is not used on Instagram. Recipient uses IGSID format. Set 'is_reusable: true' to receive an attachment_id scoped to the Instagram Business Account.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "attachment": {
+      "type": "audio",
+      "payload": {
+        "url": "https://example.com/audio/hold_music.mp3",
+        "is_reusable": true
+      }
+    }
+  }
+}

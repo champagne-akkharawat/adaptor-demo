@@ -1,0 +1,87 @@
+{
+  "_note": "Flex message with a single 'bubble' container. A bubble has optional header/hero/body/footer sections. The body is a box component with a vertical layout containing text and button components. altText is required (max 400 chars) for clients that do not support Flex (older LINE versions, some desktop clients). Max raw JSON size per flex message: 100,000 characters. Use the LINE Flex Message Simulator to design and preview layouts before deploying.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "flex",
+      "altText": "Order confirmation — Order #12345",
+      "contents": {
+        "type": "bubble",
+        "hero": {
+          "type": "image",
+          "url": "https://example.com/images/order_confirmed.jpg",
+          "size": "full",
+          "aspectRatio": "20:13",
+          "aspectMode": "cover"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Order Confirmed",
+              "weight": "bold",
+              "size": "xl"
+            },
+            {
+              "type": "text",
+              "text": "Order #12345 has been placed successfully.",
+              "wrap": true,
+              "color": "#666666",
+              "margin": "md"
+            },
+            {
+              "type": "separator",
+              "margin": "lg"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "margin": "lg",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Estimated delivery",
+                  "color": "#aaaaaa",
+                  "flex": 2
+                },
+                {
+                  "type": "text",
+                  "text": "Mar 20, 2026",
+                  "flex": 3,
+                  "align": "end"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "style": "primary",
+              "action": {
+                "type": "uri",
+                "label": "Track Order",
+                "uri": "https://example.com/orders/12345"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "margin": "sm",
+              "action": {
+                "type": "message",
+                "label": "Contact Support",
+                "text": "I need help with my order #12345"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

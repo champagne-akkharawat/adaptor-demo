@@ -1,0 +1,44 @@
+{
+  "_note": "Receipt template: an order confirmation / receipt. No buttons. 'order_number' must be unique per Page — duplicate order numbers are rejected. 'summary.total_cost' is required; other summary fields are optional but recommended. 'address' is optional (skip for digital/service orders). 'adjustments' can represent discounts (negative amount) or fees (positive amount). 'timestamp' is Unix epoch seconds as a string.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "receipt",
+        "recipient_name": "Jane Doe",
+        "merchant_name": "Aura Wellness",
+        "order_number": "ORDER-20260317-001",
+        "currency": "USD",
+        "payment_method": "Visa 4242",
+        "order_url": "https://example.com/orders/001",
+        "timestamp": "1742198400",
+        "elements": [
+          {
+            "title": "Wellness Plan — Monthly",
+            "subtitle": "Digital subscription",
+            "quantity": 1,
+            "price": 29.99,
+            "currency": "USD",
+            "image_url": "https://example.com/images/wellness_plan.jpg"
+          }
+        ],
+        "summary": {
+          "subtotal": 29.99,
+          "shipping_cost": 0.00,
+          "total_tax": 2.70,
+          "total_cost": 29.69
+        },
+        "adjustments": [
+          {
+            "name": "Promo AURA10",
+            "amount": -3.00
+          }
+        ]
+      }
+    }
+  }
+}

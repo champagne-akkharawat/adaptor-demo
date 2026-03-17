@@ -1,0 +1,43 @@
+{
+  "_note": "Buttons template: an image with a title, body text, and up to 4 action buttons. 'altText' is required (max 400 chars) for unsupported clients. 'text' max: 160 chars normally, 60 chars when thumbnailImageUrl is set. 'title' max: 40 chars. The 'defaultAction' fires when the image area is tapped. Template messages do NOT render on LINE for PC or some older clients — always set a meaningful altText. Templates are considered legacy; Flex messages offer more flexibility.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "template",
+      "altText": "Product menu — tap to view options",
+      "template": {
+        "type": "buttons",
+        "thumbnailImageUrl": "https://example.com/images/product_menu.jpg",
+        "imageAspectRatio": "rectangle",
+        "imageSize": "cover",
+        "imageBackgroundColor": "#FFFFFF",
+        "title": "Today's Menu",
+        "text": "Choose an option below",
+        "defaultAction": {
+          "type": "uri",
+          "label": "View full menu",
+          "uri": "https://example.com/menu"
+        },
+        "actions": [
+          {
+            "type": "postback",
+            "label": "Buy Now",
+            "data": "action=buy&itemid=123",
+            "displayText": "I'd like to buy item 123"
+          },
+          {
+            "type": "postback",
+            "label": "Add to Cart",
+            "data": "action=add&itemid=123",
+            "displayText": "Added item 123 to my cart"
+          },
+          {
+            "type": "uri",
+            "label": "View Details",
+            "uri": "https://example.com/products/123"
+          }
+        ]
+      }
+    }
+  ]
+}

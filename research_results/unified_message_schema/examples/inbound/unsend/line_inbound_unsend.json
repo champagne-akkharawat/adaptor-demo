@@ -1,0 +1,22 @@
+{
+  "_note": "User unsent (deleted for everyone) a message they previously sent. 'unsend.messageId' identifies the original message — use it to locate and delete any stored copy. No replyToken — cannot reply to an unsend event. The original message content cannot be retrieved after this event fires. LINE guidelines recommend respecting the user's intent: delete or make inaccessible any stored copy of the unsent content. Fires in both 1-on-1 and group/room contexts.",
+  "destination": "U39f7231fcb415a389201bc147de44810",
+  "events": [
+    {
+      "type": "unsend",
+      "mode": "active",
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "U75cbb5916e0444a5b70108ee2eb38e7c"
+      },
+      "webhookEventId": "01FZ74A0TDDPYRVKNK77XKC3ZR",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "unsend": {
+        "messageId": "325708"
+      }
+    }
+  ]
+}

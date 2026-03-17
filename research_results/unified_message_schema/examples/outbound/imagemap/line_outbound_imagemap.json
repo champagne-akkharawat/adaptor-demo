@@ -1,0 +1,39 @@
+{
+  "_note": "Imagemap sends a single image with tappable hotspot areas. The LINE client fetches the image from '{baseUrl}/{width}' — all five widths (240, 300, 460, 700, 1040) MUST be pre-served at those paths; do NOT include a file extension in baseUrl. baseSize.width must always be 1040. Area coordinates are relative to the 1040-wide reference frame. Actions can be 'uri' (opens URL), 'message' (sends text as user), or 'clipboard' (copies text, LINE v14.0.0+). An optional 'video' overlay can be layered on top. altText is required as a fallback for unsupported clients (max 400 chars).",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "imagemap",
+      "baseUrl": "https://example.com/bot/images/banner",
+      "altText": "Our seasonal product banner — tap to explore",
+      "baseSize": {
+        "width": 1040,
+        "height": 1040
+      },
+      "actions": [
+        {
+          "type": "uri",
+          "label": "View Product A",
+          "linkUri": "https://example.com/products/a",
+          "area": {
+            "x": 0,
+            "y": 0,
+            "width": 520,
+            "height": 1040
+          }
+        },
+        {
+          "type": "message",
+          "label": "Ask about Product B",
+          "text": "Tell me more about Product B",
+          "area": {
+            "x": 520,
+            "y": 0,
+            "width": 520,
+            "height": 1040
+          }
+        }
+      ]
+    }
+  ]
+}

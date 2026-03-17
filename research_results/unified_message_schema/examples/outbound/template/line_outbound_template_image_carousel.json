@@ -1,0 +1,39 @@
+{
+  "_note": "Image carousel template: horizontally scrollable images, each with exactly one action. Max 10 columns. Images must be square (1:1 aspect ratio), HTTPS, JPEG or PNG, max 10 MB. Unlike the regular carousel there is no title or text per column — only the image and one action. Useful for visual product/category browsing where the image speaks for itself.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "template",
+      "altText": "Browse product categories",
+      "template": {
+        "type": "image_carousel",
+        "columns": [
+          {
+            "imageUrl": "https://example.com/images/category_apparel.jpg",
+            "action": {
+              "type": "postback",
+              "label": "Apparel",
+              "data": "action=browse&category=apparel"
+            }
+          },
+          {
+            "imageUrl": "https://example.com/images/category_electronics.jpg",
+            "action": {
+              "type": "postback",
+              "label": "Electronics",
+              "data": "action=browse&category=electronics"
+            }
+          },
+          {
+            "imageUrl": "https://example.com/images/category_food.jpg",
+            "action": {
+              "type": "uri",
+              "label": "Food & Drinks",
+              "uri": "https://example.com/categories/food"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

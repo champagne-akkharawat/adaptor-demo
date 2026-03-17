@@ -1,0 +1,16 @@
+{
+  "_note": "Send an audio clip via URL. The URL must be publicly accessible at send time. Recommended format: MP3. Max file size: 25 MB. Set 'is_reusable: true' to receive an attachment_id for reuse across conversations (avoids re-uploading the same clip). When uploading via the Attachment Upload API, set Content-Type header to the audio MIME type (e.g. audio/mp3) — this differs from image/video uploads.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "audio",
+      "payload": {
+        "url": "https://example.com/audio/hold_music.mp3",
+        "is_reusable": true
+      }
+    }
+  }
+}

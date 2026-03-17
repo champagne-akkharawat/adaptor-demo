@@ -1,0 +1,38 @@
+{
+  "_note": "Instagram generic template: a single card with image, title, subtitle, and up to 3 buttons. IMPORTANT differences from Facebook: only 'web_url' and 'postback' button types are supported — 'phone_number', 'element_share', and 'account_link' are NOT supported on Instagram. Desktop is not supported; renders on mobile/app only. 'messaging_type' field is not used on Instagram. title/subtitle max: 80 chars each.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [
+          {
+            "title": "Your Order #12345",
+            "subtitle": "Estimated delivery: Mar 20, 2026",
+            "image_url": "https://example.com/images/order_confirmed.jpg",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://example.com/orders/12345",
+              "webview_height_ratio": "tall"
+            },
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Track Order",
+                "payload": "TRACK_ORDER_12345"
+              },
+              {
+                "type": "web_url",
+                "title": "View Details",
+                "url": "https://example.com/orders/12345"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

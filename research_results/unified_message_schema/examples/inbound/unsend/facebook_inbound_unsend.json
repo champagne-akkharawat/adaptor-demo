@@ -1,0 +1,25 @@
+{
+  "_note": "User unsent (deleted for everyone) a message they previously sent. Same 'messages' webhook field as a normal message, but 'message.is_deleted: true' and no 'text' or 'attachments' fields — the content is gone. Use 'message.mid' to locate and delete the stored copy. Respect the user's intent: remove the content from your storage and UI.",
+  "object": "page",
+  "entry": [
+    {
+      "id": "123456789012345",
+      "time": 1773729510000,
+      "messaging": [
+        {
+          "sender": {
+            "id": "5559876543210"
+          },
+          "recipient": {
+            "id": "123456789012345"
+          },
+          "timestamp": 1773729510000,
+          "message": {
+            "mid": "mid.1457764197618:41d102a3e1ae206a38",
+            "is_deleted": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "_note": "Carousel template: horizontally scrollable columns, each with an image, title, text, and up to 3 buttons. Max 10 columns. All columns MUST have the same number of actions — LINE will reject the message if action counts differ across columns. 'text' max: 120 chars normally, 60 chars if thumbnailImageUrl is set. 'title' max: 40 chars. 'imageAspectRatio' and 'imageSize' apply uniformly to all columns. For richer per-card layouts use a Flex carousel instead.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "template",
+      "altText": "Product catalogue — swipe to browse",
+      "template": {
+        "type": "carousel",
+        "imageAspectRatio": "rectangle",
+        "imageSize": "cover",
+        "columns": [
+          {
+            "thumbnailImageUrl": "https://example.com/images/item1.jpg",
+            "imageBackgroundColor": "#FFFFFF",
+            "title": "Product Alpha",
+            "text": "$29.99 — In stock",
+            "defaultAction": {
+              "type": "uri",
+              "label": "View detail",
+              "uri": "https://example.com/products/alpha"
+            },
+            "actions": [
+              {
+                "type": "postback",
+                "label": "Buy",
+                "data": "action=buy&itemid=alpha"
+              },
+              {
+                "type": "postback",
+                "label": "Add to Cart",
+                "data": "action=add&itemid=alpha"
+              },
+              {
+                "type": "uri",
+                "label": "View Details",
+                "uri": "https://example.com/products/alpha"
+              }
+            ]
+          },
+          {
+            "thumbnailImageUrl": "https://example.com/images/item2.jpg",
+            "imageBackgroundColor": "#FFFFFF",
+            "title": "Product Beta",
+            "text": "$49.99 — Limited stock",
+            "defaultAction": {
+              "type": "uri",
+              "label": "View detail",
+              "uri": "https://example.com/products/beta"
+            },
+            "actions": [
+              {
+                "type": "postback",
+                "label": "Buy",
+                "data": "action=buy&itemid=beta"
+              },
+              {
+                "type": "postback",
+                "label": "Add to Cart",
+                "data": "action=add&itemid=beta"
+              },
+              {
+                "type": "uri",
+                "label": "View Details",
+                "uri": "https://example.com/products/beta"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

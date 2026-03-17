@@ -1,0 +1,12 @@
+{
+  "_note": "Send a file to the user. Only available in 1-on-1 chats — NOT supported in group or multi-person chats. 'originalContentUrl' must be HTTPS and publicly accessible. 'fileName' is displayed in the chat with its extension. 'fileSize' is in bytes and shown in the UI. Max file size: 200 MB. Verify current availability in LINE Developers docs as constraints may change.",
+  "replyToken": "757913772c4646b784d4b7ce46d12671",
+  "messages": [
+    {
+      "type": "file",
+      "originalContentUrl": "https://example.com/docs/product_guide.pdf",
+      "fileName": "product_guide.pdf",
+      "fileSize": 1024000
+    }
+  ]
+}

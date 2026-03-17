@@ -1,0 +1,32 @@
+{
+  "_note": "User sent a voice message (recorded via Instagram's microphone button) or an audio file. Arrives as attachments[0].type: 'audio' with an ephemeral CDN URL. Download promptly — the URL expires. Note: GIFs and stickers do NOT trigger webhook events on Instagram. The IGSID in sender.id identifies the user.",
+  "object": "instagram",
+  "entry": [
+    {
+      "id": "17841400000000001",
+      "time": 1773729510000,
+      "messaging": [
+        {
+          "sender": {
+            "id": "17841400000000002"
+          },
+          "recipient": {
+            "id": "17841400000000001"
+          },
+          "timestamp": 1773729510000,
+          "message": {
+            "mid": "m_ABCDEFG123456",
+            "attachments": [
+              {
+                "type": "audio",
+                "payload": {
+                  "url": "https://cdn.example.com/audio.m4a"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

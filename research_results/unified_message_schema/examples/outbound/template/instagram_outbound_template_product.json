@@ -1,0 +1,22 @@
+{
+  "_note": "Product template (catalog-linked): displays products from a Commerce Manager catalog. Product image, title, and price are pulled automatically — no manual fields needed per element, only the retailer ID. Prerequisites: Commerce Manager account, product catalog linked to the Instagram Business Account, products must be active and commerce-eligible. Use 'elements[].id' (retailer ID from Catalog → Items → Retailer ID column) — NOT 'product_elements[].id'. Max ~10 elements.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "product",
+        "elements": [
+          {
+            "id": "12345678901234"
+          },
+          {
+            "id": "98765432109876"
+          }
+        ]
+      }
+    }
+  }
+}

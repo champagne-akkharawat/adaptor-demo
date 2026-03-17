@@ -1,0 +1,19 @@
+{
+  "_note": "User blocked the LINE Official Account. No replyToken is present — the user will not receive messages after blocking. Use this event to clean up user state (e.g., cancel scheduled messages, update CRM status to 'blocked'). Only fires in 1-on-1 context. Does NOT fire when a user simply unfollows (removes friend) without blocking — that scenario does not currently fire any webhook event.",
+  "destination": "U39f7231fcb415a389201bc147de44810",
+  "events": [
+    {
+      "type": "unfollow",
+      "mode": "active",
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "Ubbd4f124aee5113abcdef1234567890"
+      },
+      "webhookEventId": "01FZ74B5Y0F4TNKA5SCAVKPEDM",
+      "deliveryContext": {
+        "isRedelivery": false
+      }
+    }
+  ]
+}

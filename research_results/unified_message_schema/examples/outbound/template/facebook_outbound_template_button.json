@@ -1,0 +1,33 @@
+{
+  "_note": "Button template: a text message with 1–3 action buttons. Button types: 'web_url' (opens URL), 'postback' (fires messaging_postbacks event), 'phone_number' (dials E.164 number). Text max 640 chars. Not supported on Instagram — use instagram_outbound_template_generic instead.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "button",
+        "text": "What would you like to do with your order #12345?",
+        "buttons": [
+          {
+            "type": "postback",
+            "title": "Track Order",
+            "payload": "TRACK_ORDER_12345"
+          },
+          {
+            "type": "web_url",
+            "title": "View Details",
+            "url": "https://example.com/orders/12345"
+          },
+          {
+            "type": "phone_number",
+            "title": "Call Support",
+            "payload": "+15550001234"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "_note": "Generic template: a single card with image, title, subtitle, and up to 3 buttons. 'elements' max is 1 (carousel was removed in the current API). 'default_action' fires when the card image/title area is tapped — it uses web_url button fields but has no 'title'. Supported button types: 'web_url', 'postback', 'phone_number'. 'sharable' shows the native Messenger share button. title/subtitle max: 80 chars each.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "messaging_type": "RESPONSE",
+  "message": {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "sharable": false,
+        "elements": [
+          {
+            "title": "Your Order #12345",
+            "subtitle": "Estimated delivery: Mar 20, 2026",
+            "image_url": "https://example.com/images/order_confirmed.jpg",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://example.com/orders/12345"
+            },
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Track Order",
+                "payload": "TRACK_ORDER_12345"
+              },
+              {
+                "type": "web_url",
+                "title": "View Details",
+                "url": "https://example.com/orders/12345"
+              },
+              {
+                "type": "postback",
+                "title": "Cancel Order",
+                "payload": "CANCEL_ORDER_12345"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
