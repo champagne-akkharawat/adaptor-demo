@@ -1,0 +1,15 @@
+{
+  "_note": "Video sent via pre-uploaded attachment_id. Same pattern as image. Useful for a standard product demo video sent repeatedly across support conversations.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "attachment": {
+      "type": "video",
+      "payload": {
+        "attachment_id": "1857777774821099"
+      }
+    }
+  },
+  "messaging_type": "RESPONSE"
+}

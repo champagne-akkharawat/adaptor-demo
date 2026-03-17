@@ -1,0 +1,9 @@
+{
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "text": "Thank you for reaching out! Let me look into your order right away."
+  },
+  "messaging_type": "RESPONSE"
+}

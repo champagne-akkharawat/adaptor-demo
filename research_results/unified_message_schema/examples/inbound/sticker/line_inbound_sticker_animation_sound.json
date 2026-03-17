@@ -1,0 +1,32 @@
+{
+  "_note": "Animated sticker with sound. stickerResourceType is 'ANIMATION_SOUND'. CDN URL uses the animation file: https://stickershop.line-scdn.net/stickershop/v1/sticker/{stickerId}/android/sticker_animation.png (APNG). Sound plays on LINE client only — not accessible externally.",
+  "destination": "Ub8f3e85c52cb89e8a1d4b7f2e9a0c631",
+  "events": [
+    {
+      "type": "message",
+      "message": {
+        "type": "sticker",
+        "id": "468789265530126363",
+        "packageId": "11539",
+        "stickerId": "52002738",
+        "stickerResourceType": "ANIMATION_SOUND",
+        "keywords": [
+          "Excited",
+          "Wow",
+          "Amazing"
+        ]
+      },
+      "webhookEventId": "01HPHMM8Y6NKJ9P7T3M5S6WXCD",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "Uf4b3e85c52cb89e8a1d4b7f2e9a0c123"
+      },
+      "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTC",
+      "mode": "active"
+    }
+  ]
+}

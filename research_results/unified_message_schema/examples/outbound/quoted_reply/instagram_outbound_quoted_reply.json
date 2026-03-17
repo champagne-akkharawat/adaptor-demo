@@ -1,0 +1,10 @@
+{
+  "_note": "Instagram Send API has no native quote/reply-to field. Same limitation as Facebook — the agent reply is a plain message. Quote context is a CS hub UI concern only.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "text": "I understand your concern. Let me look into that order for you right away."
+  },
+  "messaging_type": "RESPONSE"
+}

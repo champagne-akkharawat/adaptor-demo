@@ -1,0 +1,27 @@
+{
+  "_note": "Instagram quick replies follow the exact same structure as Facebook. message.quick_replies array with content_type, title, and payload per item. Max 13 chips. Chips are one-time use — they disappear after the user taps. The inbound tap arrives as a 'messages' event with message.quick_reply.payload set.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "text": "How can I help you today?",
+    "quick_replies": [
+      {
+        "content_type": "text",
+        "title": "Order Status",
+        "payload": "QR_ORDER_STATUS"
+      },
+      {
+        "content_type": "text",
+        "title": "Track Shipment",
+        "payload": "QR_TRACK_SHIPMENT"
+      },
+      {
+        "content_type": "text",
+        "title": "Talk to Agent",
+        "payload": "QR_TALK_TO_AGENT"
+      }
+    ]
+  },
+  "messaging_type": "RESPONSE"
+}

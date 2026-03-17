@@ -1,0 +1,15 @@
+{
+  "_note": "Send using a pre-uploaded attachment_id instead of a URL. The attachment_id is obtained by first sending the image with is_reusable:true, or by calling POST /me/message_attachments. Reusing an ID avoids re-fetching the URL on every send and is faster for frequently-sent assets (e.g. a standard support banner).",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "attachment": {
+      "type": "image",
+      "payload": {
+        "attachment_id": "1857777774821032"
+      }
+    }
+  },
+  "messaging_type": "RESPONSE"
+}

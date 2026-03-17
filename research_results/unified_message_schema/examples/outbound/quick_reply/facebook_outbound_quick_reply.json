@@ -1,0 +1,27 @@
+{
+  "_note": "Send a message with quick reply chips. FB quick replies are defined in message.quick_replies array. Each item needs content_type ('text' for text chips), title (button label, max 20 chars), and payload (string returned when tapped). Max 13 quick replies. The chips disappear after the user taps one (one-time use).",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "text": "How can I help you today?",
+    "quick_replies": [
+      {
+        "content_type": "text",
+        "title": "Order Status",
+        "payload": "QR_ORDER_STATUS"
+      },
+      {
+        "content_type": "text",
+        "title": "Track Shipment",
+        "payload": "QR_TRACK_SHIPMENT"
+      },
+      {
+        "content_type": "text",
+        "title": "Talk to Agent",
+        "payload": "QR_TALK_TO_AGENT"
+      }
+    ]
+  },
+  "messaging_type": "RESPONSE"
+}

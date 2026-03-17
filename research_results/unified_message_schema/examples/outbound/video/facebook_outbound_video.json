@@ -1,0 +1,15 @@
+{
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "attachment": {
+      "type": "video",
+      "payload": {
+        "url": "https://example.com/videos/how-to-return.mp4",
+        "is_reusable": true
+      }
+    }
+  },
+  "messaging_type": "RESPONSE"
+}

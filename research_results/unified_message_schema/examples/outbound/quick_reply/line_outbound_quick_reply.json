@@ -1,0 +1,38 @@
+{
+  "_note": "Send a message with quick reply chips. LINE quick replies are defined in the top-level 'quickReply.items' array alongside the message. Each item has an 'action' object — 'message' action sends the label as a chat message with an optional 'text' payload. Max 13 items. The chips appear as a scrollable row below the message bubble.",
+  "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+  "messages": [
+    {
+      "type": "text",
+      "text": "How can I help you today?",
+      "quickReply": {
+        "items": [
+          {
+            "type": "action",
+            "action": {
+              "type": "message",
+              "label": "Order Status",
+              "text": "Order Status"
+            }
+          },
+          {
+            "type": "action",
+            "action": {
+              "type": "message",
+              "label": "Track Shipment",
+              "text": "Track Shipment"
+            }
+          },
+          {
+            "type": "action",
+            "action": {
+              "type": "message",
+              "label": "Talk to Agent",
+              "text": "Talk to Agent"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

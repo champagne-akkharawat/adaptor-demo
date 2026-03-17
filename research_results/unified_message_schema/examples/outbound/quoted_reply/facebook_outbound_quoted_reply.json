@@ -1,0 +1,10 @@
+{
+  "_note": "Facebook Send API has no native quote/reply-to field. The agent reply is a plain message sent to the same conversation. The CS hub UI shows the quote context locally; the user sees a regular message on their end.",
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "text": "I understand your concern. Let me look into that order for you right away."
+  },
+  "messaging_type": "RESPONSE"
+}

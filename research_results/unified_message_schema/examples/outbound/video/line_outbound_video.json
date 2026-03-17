@@ -1,0 +1,11 @@
+{
+  "replyToken": "0265531a0d544097b85cd5ae1a864ebe",
+  "messages": [
+    {
+      "type": "video",
+      "originalContentUrl": "https://example.com/videos/how-to-return.mp4",
+      "previewImageUrl": "https://example.com/videos/how-to-return-thumbnail.jpg",
+      "altText": "How to return your order"
+    }
+  ]
+}

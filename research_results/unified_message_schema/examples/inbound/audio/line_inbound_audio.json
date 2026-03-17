@@ -1,0 +1,28 @@
+{
+  "_note": "User sent a voice/audio message. contentProvider.type is always 'line' for audio — LINE never exposes the raw audio URL in the webhook. Download binary via GET /v2/bot/message/{messageId}/content (returns m4a). Duration is in milliseconds.",
+  "destination": "Ub8f3e85c52cb89e8a1d4b7f2e9a0c631",
+  "events": [
+    {
+      "type": "message",
+      "message": {
+        "type": "audio",
+        "id": "468789265530126361",
+        "duration": 14000,
+        "contentProvider": {
+          "type": "line"
+        }
+      },
+      "webhookEventId": "01HPHMM8Y6NKJ9P7T3M5S6WXYZ",
+      "deliveryContext": {
+        "isRedelivery": false
+      },
+      "timestamp": 1773729510000,
+      "source": {
+        "type": "user",
+        "userId": "Uf4b3e85c52cb89e8a1d4b7f2e9a0c123"
+      },
+      "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+      "mode": "active"
+    }
+  ]
+}

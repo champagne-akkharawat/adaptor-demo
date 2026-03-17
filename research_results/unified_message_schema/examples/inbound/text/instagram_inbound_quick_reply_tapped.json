@@ -1,0 +1,28 @@
+{
+  "_note": "Instagram quick reply tapped. Unlike Facebook postbacks, Instagram quick reply taps arrive as 'messages' events (NOT messaging_postbacks). Check for message.quick_reply.payload to distinguish from plain text.",
+  "object": "instagram",
+  "entry": [
+    {
+      "id": "17841400000000001",
+      "time": 1773729510000,
+      "messaging": [
+        {
+          "sender": {
+            "id": "17841400000000002"
+          },
+          "recipient": {
+            "id": "17841400000000001"
+          },
+          "timestamp": 1773729510000,
+          "message": {
+            "mid": "aWdGFmZDY4MTI2NTIwNDkk",
+            "text": "Chat with agent",
+            "quick_reply": {
+              "payload": "QR_CHAT_AGENT"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

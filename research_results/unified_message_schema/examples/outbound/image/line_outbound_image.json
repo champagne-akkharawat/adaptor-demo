@@ -1,0 +1,10 @@
+{
+  "replyToken": "0265531a0d544097b85cd5ae1a864ebe",
+  "messages": [
+    {
+      "type": "image",
+      "originalContentUrl": "https://example.com/images/order-confirmation.jpg",
+      "previewImageUrl": "https://example.com/images/order-confirmation-preview.jpg"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "object": "page",
+  "entry": [
+    {
+      "id": "123456789012345",
+      "time": 1773729502999,
+      "messaging": [
+        {
+          "sender": {
+            "id": "5559876543210"
+          },
+          "recipient": {
+            "id": "123456789012345"
+          },
+          "timestamp": 1773729502999,
+          "message": {
+            "mid": "m_AbCdEfGhIjKlMnOpQrStUx",
+            "sticker_id": 369239263222822,
+            "attachments": [
+              {
+                "type": "image",
+                "payload": {
+                  "url": "https://cdn.fbsbx.com/v/example-sticker.png",
+                  "sticker_id": 369239263222822
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

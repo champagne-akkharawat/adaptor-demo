@@ -1,0 +1,15 @@
+{
+  "recipient": {
+    "id": "5559876543210"
+  },
+  "message": {
+    "attachment": {
+      "type": "image",
+      "payload": {
+        "url": "https://example.com/images/order-confirmation.jpg",
+        "is_reusable": true
+      }
+    }
+  },
+  "messaging_type": "RESPONSE"
+}

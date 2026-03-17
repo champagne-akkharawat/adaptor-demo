@@ -1,0 +1,15 @@
+{
+  "_note": "Instagram video sent via pre-uploaded attachment_id. Obtain the ID by first sending the video with is_reusable:true. The attachment_id is scoped to the Instagram Business Account.",
+  "recipient": {
+    "id": "17841400000000002"
+  },
+  "message": {
+    "attachment": {
+      "type": "video",
+      "payload": {
+        "attachment_id": "987654321098766"
+      }
+    }
+  },
+  "messaging_type": "RESPONSE"
+}

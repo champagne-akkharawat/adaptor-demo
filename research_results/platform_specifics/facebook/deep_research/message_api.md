@@ -4,6 +4,33 @@
 
 ---
 
+## Table of Contents
+
+- [1. Authentication](#1-authentication)
+- [2. Send Text Reply](#2-send-text-reply)
+- [3. Send Image Attachment](#3-send-image-attachment)
+- [4. Send Video Attachment](#4-send-video-attachment)
+- [5. Send Audio Attachment](#5-send-audio-attachment)
+- [6. Send File Attachment](#6-send-file-attachment)
+- [7. Send Template Messages](#7-send-template-messages)
+  - [7.1 Button Template](#71-button-template)
+  - [7.2 Generic Template](#72-generic-template)
+  - [7.3 Media Template](#73-media-template)
+  - [7.4 Receipt Template](#74-receipt-template)
+- [8. Quick Replies](#8-quick-replies)
+- [9. Sender Actions](#9-sender-actions)
+- [10. Persona API (Custom Sender Name & Avatar)](#10-persona-api-custom-sender-name--avatar)
+- [11. Handover Protocol — Pass / Take / Request Thread Control](#11-handover-protocol--pass--take--request-thread-control)
+  - [11.1 Pass Thread Control](#111-pass-thread-control)
+  - [11.2 Take Thread Control](#112-take-thread-control)
+  - [11.3 Request Thread Control](#113-request-thread-control)
+  - [Webhook events triggered](#webhook-events-triggered)
+- [12. Common Errors (all message types)](#12-common-errors-all-message-types)
+- [13. Minimal cURL Example](#13-minimal-curl-example)
+- [14. Production Requirements](#14-production-requirements)
+
+---
+
 ## 1. Authentication
 
 > **Reference**: https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived
