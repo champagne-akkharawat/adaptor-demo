@@ -1,0 +1,78 @@
+{
+    "inbound_message": {
+        "direction": "outbound",
+        "provider": "line|facebook|instagram",
+        "sent_at": "datetime",
+
+        "message_id": {
+            "id": "ULID",
+
+            "meta_data": null
+        },
+
+        "external_source": {
+            "customer_id": "ULID",
+
+            "meta_data": null
+        },
+
+        "internal_source": {
+           "channel_id": "channel_01",
+           "agent_id": "ULID",
+
+           "meta_data": null
+        },
+
+        "text": {
+            "text_content": "Hello, I need help with my order.",
+
+            "meta_data": null
+        },
+
+        "sticker": {
+            "url": "CDN url to be constructed from meta data",
+
+            "meta_data": null
+        },
+
+        "reply_to": {
+            "message_id": "ULID",
+
+            "meta_data": null
+        },
+
+        "file_attachments": [
+            {
+                "type": "image|audio|video|file",
+                "permanent_file_url": "https:something.something.file_type",
+
+                "meta_data": null
+            }
+        ],
+
+        "quick_reply": {
+            "items": [
+                {
+                    "type": "message",
+                    "label": "Order Status",
+                    "payload": "Order Status"
+                },
+                {
+                    "type": "message",
+                    "label": "Track Shipment",
+                    "payload": "Track Shipment"
+                },
+                {
+                    "type": "message",
+                    "label": "Talk to Agent",
+                    "payload": "Talk to Agent"
+                }
+            ],
+
+            "meta_data": null
+        },
+
+        
+        "raw_payload": null
+    }
+}
