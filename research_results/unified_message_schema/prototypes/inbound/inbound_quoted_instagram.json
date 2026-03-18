@@ -1,0 +1,77 @@
+{
+    "direction": "inbound",
+    "provider": "instagram",
+    "sent_at": "datetime (received from webhook event)",
+    "message_type": "text",
+
+    "message_id": {
+        "id": "ulid (for internal use, generated at inbound adaptor)",
+
+        "meta_data": {
+            "provider": "instagram",
+            "content": {
+                "mid": "aWdGFmZDY4MTI2NTIwNDkw",
+                "timestamp": 1773729510000
+            }
+        }
+    },
+
+    "external_source": {
+        "customer_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "instagram",
+            "content": {
+                "sender": {
+                    "id": "17841400000000002"
+                }
+            }
+        }
+    },
+
+    "internal_source": {
+        "channel_id": "channel_id",
+
+        "meta_data": {
+            "provider": "instagram",
+            "content": {
+                "recipient": {
+                    "id": "17841400000000001"
+                }
+            }
+        }
+    },
+
+    "text": {
+        "text_content": "Yes, that's exactly the issue I was describing.",
+
+        "meta_data": {
+            "provider": "instagram",
+            "content": {
+                "text": "Yes, that's exactly the issue I was describing."
+            }
+        }
+    },
+
+    "sticker": null,
+    "location": null,
+
+    "reply_to": {
+        "message_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "instagram",
+            "content": {
+                "reply_to": {
+                    "mid": "aWdGFmZDY4MTI2NTIwNDkx"
+                }
+            }
+        }
+    },
+
+    "file_attachments": [],
+
+    "raw_payload": {
+        "_note": "storing raw payload to be logged or stored somewhere"
+    }
+}

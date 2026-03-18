@@ -1,0 +1,69 @@
+{
+    "direction": "inbound",
+    "provider": "line",
+    "sent_at": "datetime (received from webhook event)",
+    "message_type": "sticker",
+
+    "message_id": {
+        "id": "ulid (for internal use, generated at inbound adaptor)",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "id": "468789265530126363",
+                "isRedelivery": false,
+                "timestamp": 1773729510000,
+                "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTC"
+            }
+        }
+    },
+
+    "external_source": {
+        "customer_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "source": {
+                    "type": "user",
+                    "userId": "Uf4b3e85c52cb89e8a1d4b7f2e9a0c123"
+                }
+            }
+        }
+    },
+
+    "internal_source": {
+        "channel_id": "channel_id",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "destination": "Ub8f3e85c52cb89e8a1d4b7f2e9a0c631"
+            }
+        }
+    },
+
+    "text": null,
+
+    "sticker": {
+        "url": "https://stickershop.line-scdn.net/stickershop/v1/sticker/52002738/android/sticker_animation.png",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "packageId": "11539",
+                "stickerId": "52002738",
+                "stickerResourceType": "ANIMATION_SOUND",
+                "keywords": ["Excited", "Wow", "Amazing"]
+            }
+        }
+    },
+
+    "location": null,
+    "reply_to": null,
+    "file_attachments": [],
+
+    "raw_payload": {
+        "_note": "storing raw payload to be logged or stored somewhere"
+    }
+}

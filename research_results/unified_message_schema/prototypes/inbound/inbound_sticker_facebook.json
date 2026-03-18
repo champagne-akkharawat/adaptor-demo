@@ -1,0 +1,74 @@
+{
+    "direction": "inbound",
+    "provider": "facebook",
+    "sent_at": "datetime (received from webhook event)",
+    "message_type": "sticker",
+
+    "message_id": {
+        "id": "ulid (for internal use, generated at inbound adaptor)",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "mid": "m_AbCdEfGhIjKlMnOpQrStUx",
+                "timestamp": 1773729502999
+            }
+        }
+    },
+
+    "external_source": {
+        "customer_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "sender": {
+                    "id": "5559876543210"
+                }
+            }
+        }
+    },
+
+    "internal_source": {
+        "channel_id": "channel_id",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "recipient": {
+                    "id": "123456789012345"
+                }
+            }
+        }
+    },
+
+    "text": null,
+
+    "sticker": {
+        "url": "https://cdn.fbsbx.com/v/example-sticker.png",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "sticker_id": 369239263222822,
+                "attachments": [
+                    {
+                        "type": "image",
+                        "payload": {
+                            "url": "https://cdn.fbsbx.com/v/example-sticker.png",
+                            "sticker_id": 369239263222822
+                        }
+                    }
+                ]
+            }
+        }
+    },
+
+    "location": null,
+    "reply_to": null,
+    "file_attachments": [],
+
+    "raw_payload": {
+        "_note": "storing raw payload to be logged or stored somewhere"
+    }
+}

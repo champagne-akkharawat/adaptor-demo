@@ -1,0 +1,75 @@
+{
+    "direction": "inbound",
+    "provider": "line",
+    "sent_at": "datetime (received from webhook event)",
+    "message_type": "video",
+
+    "message_id": {
+        "id": "ulid (for internal use, generated at inbound adaptor)",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "id": "605486703578186091",
+                "isRedelivery": false,
+                "timestamp": 1773729502999,
+                "quoteToken": "hQlBVOk0CLBDn1pgIF0kZuZ7WG8uGJEM7EARxr-kFyGiC1x7lkV_4sFDDy3d8xxq",
+                "replyToken": "0265531a0d544097b85cd5ae1a864ec4"
+            }
+        }
+    },
+
+    "external_source": {
+        "customer_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "source": {
+                    "type": "user",
+                    "userId": "U75cbb5916e0444a5b70108ee2eb38e7c"
+                }
+            }
+        }
+    },
+
+    "internal_source": {
+        "channel_id": "channel_id",
+
+        "meta_data": {
+            "provider": "line",
+            "content": {
+                "destination": "U39f7231fcb415a389201bc147de44810"
+            }
+        }
+    },
+
+    "text": null,
+    "sticker": null,
+    "location": null,
+    "reply_to": null,
+
+    "file_attachments": [
+        {
+            "type": "video",
+            "permanent_file_url": "https://example.com/videos/shared-clip.mp4",
+
+            "meta_data": {
+                "provider": "line",
+                "content": {
+                    "id": "605486703578186091",
+                    "duration": 30000,
+                    "contentProvider": {
+                        "type": "external",
+                        "originalContentUrl": "https://example.com/videos/shared-clip.mp4",
+                        "previewImageUrl": "https://example.com/videos/shared-clip-thumbnail.jpg"
+                    }
+                }
+            }
+        }
+    ],
+
+    "raw_payload": {
+        "_note": "storing raw payload to be logged or stored somewhere"
+    }
+}

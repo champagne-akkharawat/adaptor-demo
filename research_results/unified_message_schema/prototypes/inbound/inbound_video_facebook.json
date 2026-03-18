@@ -1,0 +1,70 @@
+{
+    "direction": "inbound",
+    "provider": "facebook",
+    "sent_at": "datetime (received from webhook event)",
+    "message_type": "video",
+
+    "message_id": {
+        "id": "ulid (for internal use, generated at inbound adaptor)",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "mid": "m_AbCdEfGhIjKlMnOpQrStUw",
+                "timestamp": 1773729502999
+            }
+        }
+    },
+
+    "external_source": {
+        "customer_id": "null (to be filled later)",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "sender": {
+                    "id": "5559876543210"
+                }
+            }
+        }
+    },
+
+    "internal_source": {
+        "channel_id": "channel_id",
+
+        "meta_data": {
+            "provider": "facebook",
+            "content": {
+                "recipient": {
+                    "id": "123456789012345"
+                }
+            }
+        }
+    },
+
+    "text": null,
+    "sticker": null,
+    "location": null,
+    "reply_to": null,
+
+    "file_attachments": [
+        {
+            "type": "video",
+            "permanent_file_url": "null (download from CDN URL before it expires)",
+
+            "meta_data": {
+                "provider": "facebook",
+                "content": {
+                    "type": "video",
+                    "payload": {
+                        "url": "https://cdn.fbsbx.com/v/example-video.mp4"
+                    }
+                }
+            }
+        }
+    ],
+
+    "raw_payload": {
+        "_note": "storing raw payload to be logged or stored somewhere"
+    }
+}
