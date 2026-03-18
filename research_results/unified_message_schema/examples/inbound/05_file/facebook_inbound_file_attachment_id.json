@@ -1,0 +1,33 @@
+{
+  "_note": "User sent a file attachment (PDF, document, etc.). attachment_id is a permanent reusable asset ID that can be used to re-fetch a fresh signed URL via the Graph API after the CDN URL expires. No filename or MIME type is included in the webhook payload.",
+  "object": "page",
+  "entry": [
+    {
+      "id": "123456789012345",
+      "time": 1773729510000,
+      "messaging": [
+        {
+          "sender": {
+            "id": "5559876543210"
+          },
+          "recipient": {
+            "id": "123456789012345"
+          },
+          "timestamp": 1773729510000,
+          "message": {
+            "mid": "mid.$cAAJdkrCd2ORnva8ErFhjGm0X_Q_c",
+            "attachments": [
+              {
+                "type": "file",
+                "payload": {
+                  "url": "https://cdn.fbsbx.com/v/document.pdf?_nc_cat=101&_nc_sid=abc123&_nc_expires=1773733110",
+                  "attachment_id": "1234567890123459"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
