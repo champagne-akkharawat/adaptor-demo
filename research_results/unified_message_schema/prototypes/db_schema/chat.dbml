@@ -1,0 +1,151 @@
+// Platform API — Database Schema (DBML)
+// Schema: chat
+// Last updated: 2026-03-18
+// Note: cross-domain refs to platform.* are stored IDs only (no FK, enforced at app level)
+
+Table chat.providers {
+  id   int         [pk, increment]
+  name varchar(20)
+}
+
+Table chat.channels {
+  id                   int          [pk, increment]
+  channel_group_id     int          [not null, note: 'ref: platform.channel_groups.id']
+  provider_id          int          [not null, ref: > chat.providers.id]
+  provider_channel_id  varchar(255) [not null]
+  secret               varchar(255) [not null]
+  channel_access_token varchar(255) [not null]
+  is_active            boolean      [not null, default: true]
+  created_at           timestamp    [not null, default: `now()`]
+  updated_at           timestamp    [not null, default: `now()`]
+}
+
+Table chat.customers {
+  id uuid [pk, default: `gen_random_uuid()`]
+}
+
+Table chat.provider_customers {
+  id               uuid         [pk, default: `gen_random_uuid()`]
+  customer_id      uuid         [not null, ref: > chat.customers.id]
+  provider_id      int          [not null, ref: > chat.providers.id]
+  provider_user_id varchar(255) [not null]
+  meta_data        jsonb
+
+  indexes {
+    customer_id [name: 'idx_provider_customers_customer_id']
+    (provider_id, provider_user_id) [unique, name: 'idx_provider_customers_provider_user']
+  }
+}
+
+Table chat.agents {
+  id       uuid [pk, default: `gen_random_uuid()`]
+  staff_id uuid [not null, unique, note: 'ref: platform.staffs.id']
+}
+
+Table chat.sessions {
+  id                  int       [pk, increment]
+  channel_id          int       [not null, ref: > chat.channels.id]
+  customer_id         uuid      [not null, ref: > chat.customers.id]
+  started_at          timestamp [not null]
+  ended_at            timestamp
+  started_by_agent_id uuid      [ref: > chat.agents.id]
+  ended_by_agent_id   uuid      [ref: > chat.agents.id]
+
+  indexes {
+    channel_id [name: 'idx_sessions_channel_id']
+    customer_id [name: 'idx_sessions_customer_id']
+  }
+}
+
+Table chat.session_messages {
+  session_id int         [not null, ref: > chat.sessions.id]
+  message_id varchar(26) [not null, ref: > chat.messages.id]
+
+  indexes {
+    (session_id, message_id) [pk]
+    message_id [name: 'idx_session_messages_message_id']
+  }
+}
+
+Table chat.messages {
+  id                   varchar(26) [pk]
+  channel_id           int         [not null, ref: > chat.channels.id]
+  provider_id          int         [not null, ref: > chat.providers.id]
+  provider_customer_id uuid        [not null, ref: > chat.provider_customers.id]
+  direction            varchar(10) [not null]
+  status               varchar(20) [not null]
+  sent_at              timestamp   [not null]
+  received_at          timestamp   [not null]
+  type                 varchar(20) [not null]
+  text                 text
+  sticker_url          varchar(500)
+  location             jsonb
+  reply_to_message_id  varchar(26) [ref: > chat.messages.id]
+
+  indexes {
+    channel_id [name: 'idx_messages_channel_id']
+    provider_customer_id [name: 'idx_messages_provider_customer_id']
+  }
+}
+
+Table chat.provider_messages {
+  message_id          varchar(26)  [pk, ref: - chat.messages.id]
+  provider_message_id varchar(255) [not null]
+  text                jsonb
+  sticker             jsonb
+  location            jsonb
+  reply_to            jsonb
+  raw_webhook_payload jsonb
+}
+
+Table chat.message_attachments {
+  id         uuid        [pk, default: `gen_random_uuid()`]
+  message_id varchar(26) [not null, ref: > chat.messages.id]
+  file_type  varchar(50)
+  file_name  varchar(255)
+  file_size  int
+  file_url   varchar(500)
+  status     varchar(20) [not null]
+
+  indexes {
+    message_id [name: 'idx_message_attachments_message_id']
+  }
+}
+
+Table chat.provider_message_attachments {
+  id                    uuid        [pk, default: `gen_random_uuid()`]
+  message_attachment_id uuid        [not null, ref: - chat.message_attachments.id]
+  provider_id           int         [not null]
+  type                  varchar(20) [not null]
+  meta_data             jsonb
+}
+
+
+
+Table chat.agent_channel_permissions {
+  channel_id  int   [not null, ref: > chat.channels.id]
+  agent_id    uuid  [not null, ref: > chat.agents.id]
+  permissions jsonb [not null]
+
+  indexes {
+    (agent_id, channel_id) [pk]
+  }
+}
+
+TableGroup chat {
+  chat.providers
+  chat.channels
+  chat.customers
+  chat.provider_customers
+  chat.agents
+  chat.sessions
+  chat.messages
+  chat.provider_messages
+  chat.message_attachments
+  chat.provider_message_attachments
+  chat.session_messages
+  chat.agent_channel_permissions
+}
+
+
+Ref: "chat"."provider_messages"."message_id" < "chat"."provider_messages"."text"
