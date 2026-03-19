@@ -144,6 +144,8 @@
     "file_attachments": [
         {
             "type": "image|audio|video|file",
+            "file_name": "aaa",
+            "file_size": 1111,
             "permanent_file_url": "null (to be filled later)",
 
             "meta_data": {
