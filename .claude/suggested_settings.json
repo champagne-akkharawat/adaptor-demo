@@ -11,8 +11,7 @@
       "Bash(go run:*)",
       "Bash(git log:*)",
       "Bash(git diff:*)",
-      "Bash(git status:*)",
-      "Bash(wc -l \"Distributed Task Processing & SQS Architecture Guide _ Claude.html\")"
+      "Bash(git status:*)"
     ]
   }
 }
