@@ -1,0 +1,176 @@
+{
+    "message": {
+        "direction": "inbound",
+        "sent_at": "datetime (received from webhook event)",
+        "channel_id": "channel_id",
+        "session_id": "null (to be lookup later)",
+        "session_seq_id": "null (to be lookup and generated later)",
+
+        "message_type": "text|image|audio|video|file|sticker|location",
+
+        "message_id": {
+            "id": "UUID (internal, generated at inbound adaptor)",
+
+            "meta_data": {
+                "provider": "line|facebook|instagram",
+                "content (FB+IG)": {
+                    "mid": "m_AbCdEfGhIjKlMnOpQrStUv",
+                    "timestamp": 1773729502999
+                },
+                "content (Line)": {
+                    "id": "605486703578186001",
+                    "isRedelivery": false,
+                    "timestamp": 1773729510000,
+                    "quoteToken": "xQlBVOk0CLBDn1pgIF0kZuZ7WG8uGJEM7EARxr-kFyGiC1x7lkV_4sFDDy3d8xxo",
+                    "replyToken": "1265531a0d544097b85cd5ae1a864ec2"
+                }
+            }
+        },
+
+        "customer": {
+            "customer_id": "null (to be lookup later)",
+
+            "meta_data": {
+                "provider": "line|facebook|instagram",
+                "content (FB+IG)": {
+                    "sender": {
+                        "id": "5559876543210"
+                    }
+                },
+                "content (Line)": {
+                    "source (Line)": {
+                        "type": "user",
+                        "userId": "U75cbb5916e0444a5b70108ee2eb38e7c"
+                    }
+                }
+            }
+        },
+
+        "text": {
+            "text_content": "Hello, I need help with my order.",
+
+            "meta_data": {
+                "provider": "line|facebook|instagram",
+                "content (FB+IG)": {
+                    "text": "Hello, I need help with my order."
+                },
+                "content (Line)": {
+                    "text": "Hello, I need help with my order."
+                }
+            }
+        },
+
+        "sticker": {
+            "url": "null (CDN url to be constructed from meta data)",
+
+            "meta_data": {
+                "provider": "line|facebook|instagram",
+                "content (FB+IG)": {
+                    "sticker_id": 369239263222822,
+                    "attachments": [
+                        {
+                            "type": "image",
+                            "payload": {
+                                "url": "https://cdn.fbsbx.com/v/example-sticker.png",
+                                "sticker_id": 369239263222822
+                            }
+                        }
+                    ]
+                },
+                "content (Line)": {
+                    "packageId": "11537",
+                    "stickerId": "52002734",
+                    "stickerResourceType": "STATIC",
+                    "keywords": ["hello", "greeting", "wave"]
+                }
+            }
+        },
+
+        "location": {
+            "title": "my location",
+            "address": "1-3 Kioicho, Chiyoda-ku, Tokyo, 102-8282 Japan",
+            "latitude": 35.67966,
+            "longitude": 139.73669,
+
+            "meta_data": {
+                "provider":"line|facebook|instagram",
+                "content (FB)": {
+                    "title": "my location",
+                    "payload": {
+                    "coordinates": {
+                        "lat": 35.67966,
+                        "long": 139.73669
+                    }
+                    }
+                },
+                "content (Line)": {
+                    "title": "my location",
+                    "address": "1-3 Kioicho, Chiyoda-ku, Tokyo, 102-8282 Japan",
+                    "latitude": 35.67966,
+                    "longitude": 139.73669
+                }
+            }
+        },
+
+        "reply_to": {
+            "message_id": "null (to be filled later)",
+
+            "meta_data": {
+                "provider": "line|facebook|instagram",
+                "content (FB+IG)": {
+                    "reply_to": {
+                        "mid": "m_AbCdEfGhIjKlMnOpQrStUv"
+                    }
+                },
+                "content (Line)": {
+                    "quotedMessageId": "605486703578186001"
+                }
+            }
+        },
+
+        "file_attachments": [
+            {
+                "type": "image|audio|video|file",
+                "file_name": "aaa.jpg",
+                "file_size": 1111,
+                "permanent_file_url": "null (to be filled later)",
+
+                "meta_data": {
+                    "provider": "line|facebook|instagram",
+                    "content (FB+IG)": {
+                        "type": "image",
+                        "payload": {
+                            "url": "https://cdn.fbsbx.com/v/example-image.jpg"
+                        }
+                    },
+                    "content (FB with attachment_id)": {
+                        "type": "image",
+                        "payload": {
+                            "url": "https://cdn.fbsbx.com/v/example-image.jpg?_nc_cat=101&_nc_sid=abc123&_nc_expires=1773733102",
+                            "attachment_id": "1234567890123456"
+                        }
+                    },
+                    "content (Line image)": {
+                        "type": "image",
+                        "id": "605486703578186087",
+                        "contentProvider": {
+                            "type": "line"
+                        }
+                    },
+                    "content (Line image with external provider)": {
+                        "type": "image",
+                        "id": "605486703578186090",
+                        "contentProvider": {
+                            "type": "external",
+                            "originalContentUrl": "https://example.com/images/shared-photo.jpg",
+                            "previewImageUrl": "https://example.com/images/shared-photo-preview.jpg"
+                        }
+                    }
+                }
+            }
+        ],
+
+        
+        "raw_payload": {}
+    }
+}
