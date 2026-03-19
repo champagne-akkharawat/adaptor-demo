@@ -1,6 +1,5 @@
 // Platform API — Database Schema (DBML)
 // Schema: chat
-// Last updated: 2026-03-18
 // Note: cross-domain refs to platform.* are stored IDs only (no FK, enforced at app level)
 
 Table chat.providers {
@@ -9,8 +8,8 @@ Table chat.providers {
 }
 
 Table chat.channels {
-  id                   int          [pk, increment]
-  channel_group_id     int          [not null, note: 'ref: platform.channel_groups.id']
+  id                   uuid         [pk, default: `gen_random_uuid()`]
+  channel_group_id     uuid         [not null, note: 'ref: platform.channel_groups.id']
   provider_id          int          [not null, ref: > chat.providers.id]
   provider_channel_id  varchar(255) [not null]
   secret               varchar(255) [not null]
@@ -48,7 +47,7 @@ Table chat.agents {
 }
 
 Table chat.sessions {
-  id                  int       [pk, increment]
+  id                  uuid      [pk, default: `gen_random_uuid()`]
   channel_id          int       [not null, ref: > chat.channels.id]
   customer_id         uuid      [not null, ref: > chat.customers.id]
   started_at          timestamp [not null]
@@ -63,7 +62,7 @@ Table chat.sessions {
 }
 
 Table chat.session_action_records {
-  id                  int       [pk, increment]
+  id                  uuid      [pk, default: `gen_random_uuid()`]
   session_id          int       [not null, ref: > chat.sessions.id]
   action_type         varchar
   action_owner        varchar
@@ -71,10 +70,11 @@ Table chat.session_action_records {
 }
 
 Table chat.messages {
-  id                   varchar(26) [pk]
+  id                   uuid        [pk, default: `gen_random_uuid()`]
   session_id           uuid        [not null, ref: > chat.sessions.id]
+  session_seq_id       int         [not null, note: 'Auto-incremented per session_id; set via trigger or application logic']
   direction            varchar(10) [not null, note: 'inbound|outbound']
-  sender_type          varchar     [note: 'customer|cs_agent|chatbot']
+  sender_type          varchar     [note: 'customer | cs_agent | chatbot']
   sent_by_agent_id     varchar
   sent_at              timestamp   [not null]
   received_at          timestamp   [not null]
@@ -83,10 +83,14 @@ Table chat.messages {
   sticker_url          varchar(500)
   location             jsonb
   reply_to_message_id  varchar(26) [ref: > chat.messages.id]
+
+  indexes {
+    (session_id, session_seq_id) [unique]
+  }
 }
 
 Table chat.provider_messages {
-  id                   varchar(26) [pk]
+  id                  uuid [pk, default: `gen_random_uuid()`]
   message_id          varchar(26)  [ref: - chat.messages.id]
   text                jsonb
   sticker             jsonb
@@ -115,7 +119,7 @@ Table chat.provider_message_attachments {
 
 
 Table chat.agent_channel_permissions {
-  channel_id  int   [not null, ref: > chat.channels.id]
+  channel_id  uuid   [not null, ref: > chat.channels.id]
   agent_id    uuid  [not null, ref: > chat.agents.id]
   permissions jsonb [not null]
 
